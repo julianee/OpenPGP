@@ -10,43 +10,64 @@ SINOPSE
 
 
 DESCRIÇÃO
-O gpg é a parte OpenPGP do GNU Privacy Guard (GnuPG). É uma ferramenta que fornece   criptografia digital e serviços de assinaturas usando o padrão OpenPGP. O gpg possui recursos para um completo gerenciamento de chaves e todos os recursos que você pode esperar de uma implementação decente do OpenPGP.
+O gpg é a parte OpenPGP do GNU Privacy Guard (GnuPG). É uma ferramenta que fornece   criptografia digital e serviços de 
+assinaturas usando o padrão OpenPGP. O gpg possui recursos para um completo gerenciamento de chaves e todos os recursos 
+que você pode esperar de uma implementação decente do OpenPGP.
 
 
 Essa é uma versão autônoma do gpg.  Para o uso em desktop você deve considerar usar o gpg2.
 
 
 VALOR DE RETORNO
-O programa retorna 0 se tudo ocorrer bem, 1 se ao menos uma assinatura for mal sucedida, e outro código de erro para um erro fatal.
+O programa retorna 0 se tudo ocorrer bem, 1 se ao menos uma assinatura for mal sucedida, e outro código de erro para um 
+erro fatal.
 
 
 ALERTAS
-Utilize uma *boa* senha para sua conta de usuário e uma *boa* frase secreta para proteger sua chave secreta. Essa é a parte mais frágil de todo sistema. Programas para fazer ataques de dicionário são muito simples de escrever então você deve proteger seu diretório “~/.gnupg/” muito bem.
+Utilize uma *boa* senha para sua conta de usuário e uma *boa* frase secreta para proteger sua chave secreta. Essa é a 
+parte mais frágil de todo sistema. Programas para fazer ataques de dicionário são muito simples de escrever então você 
+deve proteger seu diretório “~/.gnupg/” muito bem.
 
 
 Mantenha em mente que, se esse programa é usado sobre uma rede (telnet), é *muito* fácil de espiar sua frase secreta!
 
 
-Se você irá verificar assinaturas avulsas, tenha certeza de que o programa sabe disso; dê nomes para ambos os arquivos pela linha de comando ou use '-'' para STDIN específica.
+Se você irá verificar assinaturas avulsas, tenha certeza de que o programa sabe disso; dê nomes para ambos os arquivos 
+pela linha de comando ou use '-'' para STDIN específica.
 
 
 INTEROPERABILIDADE
-O GnuPG tenta ser uma implementação muito flexível do padrão OpenPGP. Em particular, o GnuPG implementa várias das partes opcionais do padrão, como os algoritmos de compressão  SHA-512 hash, o ZLIB e o BZIP2. É importante estar ciente de que nem todos os programas OpenPGP implementam esses algoritmos opcionais e forçar seu uso via opções --cipher-algo, --digest-algo, --cert-digest-algo, ou --compress-algo no GnuPG, é possível criar uma mensagem OpenPGP perfeitamente válida, mas não pode ser lida pelo destinatário pretendido.
-          
-Existem dezenas de variações de programas disponíveis do OpenPGP, e cada um suporta um conjunto desses algoritmos opcionais. Por exemplo, até recentemente, nenhuma (não hackeada) versão do PGP contêm o algoritmo de criptografia BLOWFISH. Uma mensagem usando BLOWFISH simplesmente não pode ser lida por um usuário PGP. Por padrão, GnuPG usa o padrão de sistema de preferências OpenPGP que irá sempre fazer a coisa certa e criar mensagens que são usadas por todos os destinatários, independentemente de qual programa OpenPGP eles usam. Somente substitua esse padrão seguro se você realmente souber o que você está fazendo.
+O GnuPG tenta ser uma implementação muito flexível do padrão OpenPGP. Em particular, o GnuPG implementa várias das 
+partes opcionais do padrão, como os algoritmos de compressão  SHA-512 hash, o ZLIB e o BZIP2. É importante estar ciente 
+de que nem todos os programas OpenPGP implementam esses algoritmos opcionais e forçar seu uso via opções --cipher-algo, 
+--digest-algo, --cert-digest-algo, ou --compress-algo no GnuPG, é possível criar uma mensagem OpenPGP perfeitamente 
+válida, mas não pode ser lida pelo destinatário pretendido.
+  
+Existem dezenas de variações de programas disponíveis do OpenPGP, e cada um suporta um conjunto desses algoritmos 
+opcionais. Por exemplo, até recentemente, nenhuma (não hackeada) versão do PGP contêm o algoritmo de criptografia 
+BLOWFISH. Uma mensagem usando BLOWFISH simplesmente não pode ser lida por um usuário PGP. Por padrão, GnuPG usa o 
+padrão de sistema de preferências OpenPGP que irá sempre fazer a coisa certa e criar mensagens que são usadas por todos 
+os destinatários, independentemente de qual programa OpenPGP eles usam. Somente substitua esse padrão seguro se você 
+realmente souber o que você está fazendo.
 
 
-Se absolutamente você tiver que substituir o padrão seguro, ou se as preferências em uma determinada chave são inválidas por algum motivo, é melhor você usar as opções --pgp6, --pgp7, ou --pgp8. Essas opções são seguras assim como não forçam nenhum algoritmo particular em violação ao OpenPGP, mas sim, reduz os algoritmos disponíveis a uma lista “PGP-safe”.
+Se absolutamente você tiver que substituir o padrão seguro, ou se as preferências em uma determinada chave são 
+inválidas por algum motivo, é melhor você usar as opções --pgp6, --pgp7, ou --pgp8. Essas opções são seguras assim como 
+não forçam nenhum algoritmo particular em violação ao OpenPGP, mas sim, reduz os algoritmos disponíveis a uma lista 
+“PGP-safe”.
 
 
 COMANDOS           
 Comandos não são distintos das opções exceto pelo fato de que somente um  comando é permitido.
 
 
-O gpg deve rodar sem nenhum comando, em cada caso ele vai realizar uma ação sensata dependendo do tipo de arquivo dado como entrada (uma mensagem criptografada é descriptografada, uma assinatura é verificada, um arquivo contendo chaves é listado).
+O gpg deve rodar sem nenhum comando, em cada caso ele vai realizar uma ação sensata dependendo do tipo de arquivo dado 
+como entrada (uma mensagem criptografada é descriptografada, uma assinatura é verificada, um arquivo contendo chaves é 
+listado).
 
 
-Por favor, lembre-se de que a opção assim como o analisador de comando para assim que uma não opção é encontrada, você deve explicitamente parar a análise usando a opção especial --.
+Por favor, lembre-se de que a opção assim como o analisador de comando para assim que uma não opção é encontrada, você 
+deve explicitamente parar a análise usando a opção especial --.
 
 
 Comandos não específicos para a função
@@ -56,13 +77,15 @@ Imprime a versão do programa e informações de licenciamento. Note que você n
 --help
 
 
-         -h        Imprime uma mensagem resumindo as opções mais úteis da linha de  comando. Note que você não pode abreviar este comando.
+         -h        Imprime uma mensagem resumindo as opções mais úteis da linha de  comando. Note que você não pode 
+abreviar este comando.
            
 --warranty
 Imprime informação de garantia.
            
 --dump-options
-                    Imprime uma lista de todas as opções e comandos disponíveis. Note que você não pode abreviar este comando.
+                    Imprime uma lista de todas as opções e comandos disponíveis. Note que você não pode abreviar este 
+comando.
 
 
 Comandos para selecionar o tipo de operação
@@ -70,10 +93,16 @@ Comandos para selecionar o tipo de operação
 --sign
 
 
-            -s         Faça uma assinatura. Esse comando pode ser combinado com --encrypt (para uma mensagem assinada e criptografada), --symmetric (para uma mensagem assinada e simetricamente criptografada), ou --encrypt e --symmetric juntos (para uma mensagem assinada que pode ser descriptografada por meio de uma chave secreta ou uma frase secreta). A chave a ser usada para assinar é escolhida como padrão ou pode ser definida com a opção --local-user e --default-key.
+            -s         Faça uma assinatura. Esse comando pode ser combinado com --encrypt (para uma mensagem assinada e 
+criptografada), --symmetric (para uma mensagem assinada e simetricamente criptografada), ou --encrypt e --symmetric 
+juntos (para uma mensagem assinada que pode ser descriptografada por meio de uma chave secreta ou uma frase secreta). A 
+chave a ser usada para assinar é escolhida como padrão ou pode ser definida com a opção --local-user e --default-key.
            
 --clearsign
-Faça uma assinatura em texto puro. O conteúdo em uma assinatura de texto é legível sem nenhum software especial. O software OpenPGP é necessário somente para verificar a assinatura. Assinaturas em texto puro podem modificar o espaço em branco de fim da linha para independência de plataforma e não se destinam a serem reversíveis. A chave a ser usada para assinatura é escolhida por definição ou pode ser definida com a opção --local-user e --default-key.
+Faça uma assinatura em texto puro. O conteúdo em uma assinatura de texto é legível sem nenhum software especial. O 
+software OpenPGP é necessário somente para verificar a assinatura. Assinaturas em texto puro podem modificar o espaço 
+em branco de fim da linha para independência de plataforma e não se destinam a serem reversíveis. A chave a ser usada 
+para assinatura é escolhida por definição ou pode ser definida com a opção --local-user e --default-key.
   
 --detach-sign
 
@@ -81,12 +110,19 @@ Faça uma assinatura em texto puro. O conteúdo em uma assinatura de texto é le
            -b         Faça uma assinatura separada.
            
 --encrypt
--e         Criptografar dados. Essa opção pode ser combinada com  --sign (para uma mensagem assinada e criptografada), --symmetric (para uma mensagem que pode ser descriptografada por meio de uma chave secreta ou uma frase secreta), ou --sign e --symmetric juntos (para uma mensagem assinada que pode ser descriptografada por meio de uma chave secreta ou uma frase secreta).
+-e         Criptografar dados. Essa opção pode ser combinada com  --sign (para uma mensagem assinada e criptografada), 
+--symmetric (para uma mensagem que pode ser descriptografada por meio de uma chave secreta ou uma frase secreta), ou 
+--sign e --symmetric juntos (para uma mensagem assinada que pode ser descriptografada por meio de uma chave secreta ou 
+uma frase secreta).
            
 --symmetric
 
 
-           -c   Criptografar dados com um criptograma simétrico usando uma frase secreta. O criptograma simétrico padrão usado é o CAST5, mas pode ser escolhido com a opção --cipher-algo. Essa opção pode ser combinada com --sign (para uma mensagem assinada e simetricamente criptografada), --encrypt (para uma mensagem que pode ser descriptografada por meio de uma chave secreta ou uma frase secreta), ou --sign e --encrypt juntos (para uma mensagem assinada que pode ser descriptografada por meio de uma chave secreta ou uma frase secreta).
+           -c   Criptografar dados com um criptograma simétrico usando uma frase secreta. O criptograma simétrico 
+padrão usado é o CAST5, mas pode ser escolhido com a opção --cipher-algo. Essa opção pode ser combinada com --sign 
+(para uma mensagem assinada e simetricamente criptografada), --encrypt (para uma mensagem que pode ser descriptografada 
+por meio de uma chave secreta ou uma frase secreta), ou --sign e --encrypt juntos (para uma mensagem assinada que pode 
+ser descriptografada por meio de uma chave secreta ou uma frase secreta).
  
            --store
                     Somente armazena (cria um simples pacote de dados RFC1991 literal).
@@ -94,14 +130,25 @@ Faça uma assinatura em texto puro. O conteúdo em uma assinatura de texto é le
  --decrypt
 
 
-           -d    Descriptografa o arquivo passado pela linha de comando (ou STDIN se nenhum arquivo é especificado) e escreve em STDOUT (ou no arquivo especificado com --output).
- Se o arquivo descriptografado é assinado, a assinatura também é verificada. Esse comando se difere da operação padrão, como ele nunca escreve no nome do arquivo que é incluído no arquivo e rejeita os arquivos que não começam com uma mensagem criptografada.
+           -d    Descriptografa o arquivo passado pela linha de comando (ou STDIN se nenhum arquivo é especificado) e 
+escreve em STDOUT (ou no arquivo especificado com --output).
+Se o arquivo descriptografado é assinado, a assinatura também é verificada. Esse comando se difere da operação padrão,
+como ele nunca escreve no nome do arquivo que é incluído no arquivo e rejeita os arquivos que não começam com uma 
+mensagem criptografada.
            
 --verify
-Assume que o primeiro argumento é um arquivo assinado ou uma assinatura separada e verifica isso sem gerar uma saída. Sem argumentos, o pacote de assinaturas é lido do STDIN. Se somente um arquivo assinado é dado, pode ser uma assinatura completa ou uma assinatura separada, em cada caso o material assinado é esperado num arquivo sem as extensões ".sig" ou  ".asc". Com mais de 1 argumento, o primeiro deverá ser uma assinatura separada e os outros arquivos são materiais assinados. Para ler os materiais assinados pelo STDIN, use '-'' como o segundo nome do arquivo. Por motivos de segurança uma assinatura separada não poderá ler um material assinado pelo STDIN sem denotá-lo da maneira acima.
+Assume que o primeiro argumento é um arquivo assinado ou uma assinatura separada e verifica isso sem gerar uma saída. 
+Sem argumentos, o pacote de assinaturas é lido do STDIN. Se somente um arquivo assinado é dado, pode ser uma assinatura
+completa ou uma assinatura separada, em cada caso o material assinado é esperado num arquivo sem as extensões ".sig" ou  
+".asc". Com mais de 1 argumento, o primeiro deverá ser uma assinatura separada e os outros arquivos são materiais 
+assinados. Para ler os materiais assinados pelo STDIN, use '-'' como o segundo nome do arquivo. Por motivos de 
+segurança uma assinatura separada não poderá ler um material assinado pelo STDIN sem denotá-lo da maneira acima.
            
 --multifile
-Isto modifica alguns outros comandos para aceitar múltiplos arquivos para processamento na linha de comando ou realizar leitura pelo STDIN com cada nome de arquivo em uma linha separada. Isso permite que vários arquivos sejam processados de uma só vez. --multifile pode atualmente ser usado junto com --verify, --encrypt, e --decrypt. Note que --multifile --verify não podem ser usados com assinaturas separadas.            
+Isto modifica alguns outros comandos para aceitar múltiplos arquivos para processamento na linha de comando ou realizar 
+leitura pelo STDIN com cada nome de arquivo em uma linha separada. Isso permite que vários arquivos sejam processados 
+de uma só vez. --multifile pode atualmente ser usado junto com --verify, --encrypt, e --decrypt. Note que --multifile 
+--verify não podem ser usados com assinaturas separadas.            
                    
 --verify-files
 Idêntico a --multifile --verify.
@@ -119,10 +166,13 @@ Idêntico a --multifile --verify.
 
 
            --list-public-keys
-Lista todas as chaves existentes no chaveiro público, ou apenas as chaves dadas pela linha de comando. --k é um pouco diferente de --list-keys  pelo fato de ser permitido somente com um argumento e receber o segundo argumento como o chaveiro para a pesquisa. Isso é para compatibilidade na linha de comando com o PGP 2 e foi removido no gpg2.
+Lista todas as chaves existentes no chaveiro público, ou apenas as chaves dadas pela linha de comando. --k é um pouco 
+diferente de --list-keys  pelo fato de ser permitido somente com um argumento e receber o segundo argumento como o 
+chaveiro para a pesquisa. Isso é para compatibilidade na linha de comando com o PGP 2 e foi removido no gpg2.
 
 
-Evite usar a saída desse comando em scripts ou outros programas já que é provável que mude como GnuPG muda. Veja --with-colons para um comando de uma máquina analisadora de listagem de chaves que é apropriada para o uso de scripts e outros programas.
+Evite usar a saída desse comando em scripts ou outros programas já que é provável que mude como GnuPG muda. Veja 
+--with-colons para um comando de uma máquina analisadora de listagem de chaves que é apropriada para o uso de scripts e outros programas.
 
 
        --list-secret-keys
