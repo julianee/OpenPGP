@@ -172,45 +172,63 @@ chaveiro para a pesquisa. Isso é para compatibilidade na linha de comando com o
 
 
 Evite usar a saída desse comando em scripts ou outros programas já que é provável que mude como GnuPG muda. Veja 
---with-colons para um comando de uma máquina analisadora de listagem de chaves que é apropriada para o uso de scripts e outros programas.
+--with-colons para um comando de uma máquina analisadora de listagem de chaves que é apropriada para o uso de scripts e 
+outros programas.
 
 
-       --list-secret-keys
+           --list-secret-keys
 
 
-       -K                Lista todas as chaves do chaveiro secreto, ou apenas as chaves dadas pela      linha de comando. Um # depois das letras sec significa que a chave secreta não é útil (por exemplo, se for criada por --export-secret-subkeys).
+           -K                Lista todas as chaves do chaveiro secreto, ou apenas as chaves dadas pela linha de comando. 
+Um # depois das letras sec significa que a chave secreta não é útil (por exemplo, se for criada por 
+--export-secret-subkeys).
 
 
-     --list-sigs
+           --list-sigs
                     O mesmo de --list-keys, mas as assinaturas são listadas também.
 
 
                     
-Para cada assinatura listada, existem diversas flags entre o campo "sig" e o id da chave. Essas flags fornecem informações adicionais sobre cada assinatura. Da esquerda para a direita, existem números de 1-3 para níveis de verificações de certificados (veja --ask-cert-level), "L" para uma assinatura local ou uma assinatura que não é exportável (veja --lsign-key), "R" para uma assinatura não Recuperável (veja o--edit-key comando "nrsign"), "P" para uma assinatura que possui uma URL policy (veja --cert-policy-url), "N" para uma assinatura que possua uma notação (veja --cert-notation), "X" para uma assinatura expirada (veja --ask-cert-expire), e os números de 1-9 ou "T" para 10 em diante para indicar níveis confiáveis de assinaturas (veja o  --edit-key  comando "tsign").
+Para cada assinatura listada, existem diversas flags entre o campo "sig" e o id da chave. Essas flags fornecem 
+informações adicionais sobre cada assinatura. Da esquerda para a direita, existem números de 1-3 para níveis de 
+verificações de certificados (veja --ask-cert-level), "L" para uma assinatura local ou uma assinatura que não é 
+exportável (veja --lsign-key), "R" para uma assinatura não Recuperável (veja o--edit-key comando "nrsign"), "P" para 
+uma assinatura que possui uma URL policy (veja --cert-policy-url), "N" para uma assinatura que possua uma notação 
+(veja --cert-notation), "X" para uma assinatura expirada (veja --ask-cert-expire), e os números de 1-9 ou "T" para 10 
+em diante para indicar níveis confiáveis de assinaturas (veja o  --edit-key  comando "tsign").
  
            --check-sigs
-O mesmo de --list-sigs,  mas as assinaturas são verificadas. Note que por questão de desempenho o status de revogação de uma chave assinada não é mostrado.
+O mesmo de --list-sigs,  mas as assinaturas são verificadas. Note que por questão de desempenho o status de revogação de 
+uma chave assinada não é mostrado.
 
 
-O status da verificação é indicado por uma flag seguida diretamente pelo campo "sig" (ou seja, antes das flags descritas acima por --list-sigs).  Um "!" indica que a assinatura foi verificada com sucesso, um "-" denota uma assinatura ruim e um "%"  é usado se acontecer algum erro enquanto a assinatura é verificada (por exemplo, um algoritmo não suportado).
+O status da verificação é indicado por uma flag seguida diretamente pelo campo "sig" (ou seja, antes das flags descritas 
+acima por --list-sigs).  Um "!" indica que a assinatura foi verificada com sucesso, um "-" denota uma assinatura ruim e 
+um "%"  é usado se acontecer algum erro enquanto a assinatura é verificada (por exemplo, um algoritmo não suportado).
    
         --fingerprint
-Lista todas as chaves (ou aquelas especificadas) juntamente com suas fingerprints (impressões digitais). É a mesma saída de --list-keys, mas com a saída adicional de uma linha com a fingerprint. Pode ser combinado com --list-sigs ou --check-sigs. Se esse comando é executado duas vezes, as fingerprints de todas as chaves secundárias também são listadas.
+Lista todas as chaves (ou aquelas especificadas) juntamente com suas fingerprints (impressões digitais). É a mesma saída 
+de --list-keys, mas com a saída adicional de uma linha com a fingerprint. Pode ser combinado com --list-sigs ou 
+--check-sigs. Se esse comando é executado duas vezes, as fingerprints de todas as chaves secundárias também são listadas.
    
         --list-packets
                     Lista somente a sequencia de pacotes. É útil para depuração.
    
         --card-edit
-                    Apresenta um menu para trabalhar com um smartcard. O sub comando "help" fornece uma visão geral sobre todos os comandos disponíveis. Para uma descrição detalhada, por favor veja o Card HOWTO em http://www.gnupg.org/documentation/howtos.html#GnuPG-cardHOWTO .
+                    Apresenta um menu para trabalhar com um smartcard. O sub comando "help" fornece uma visão geral 
+sobre todos os comandos disponíveis. Para uma descrição detalhada, por favor veja o Card HOWTO em 
+http://www.gnupg.org/documentation/howtos.html#GnuPG-cardHOWTO .
    
         --card-status
      Mostra o conteúdo do smart card.
            --change-pin
-Apresenta um menu que permite trocar o PIN de um smartcard. Essa funcionalidade também está disponível como o sub comando "passwd" com o comando --card-edit.
+Apresenta um menu que permite trocar o PIN de um smartcard. Essa funcionalidade também está disponível como o sub 
+comando "passwd" com o comando --card-edit.
 
 
            --delete-key nome
-Remove uma chave do chaveiro público. No modo batch, --yes é requerido ou a chave deve ser especificada pela fingerprint. Este é um modo de segurança contra a remoção de múltiplas chaves.
+Remove uma chave do chaveiro público. No modo batch, --yes é requerido ou a chave deve ser especificada pela fingerprint. 
+Este é um modo de segurança contra a remoção de múltiplas chaves.
 
 
        --delete-secret-key nome
@@ -218,20 +236,29 @@ Remove uma chave do chaveiro secreto e do público. No modo batch a chave deve s
 
 
        --delete-secret-and-public-key nome
-O mesmo de --delete-key, mas se existir uma chave secreta, ela vai ser removida primeiro. No modo batch  a chave deve ser especificada pela fingerprint.
+O mesmo de --delete-key, mas se existir uma chave secreta, ela vai ser removida primeiro. No modo batch  a chave deve 
+ser especificada pela fingerprint.
 
 
            --export
-Exporta todas as chaves de todos os chaveiros (chaveiros padrões e aqueles registrados pela opção --keyring), ou se ao menos um nome é dado, exporta esses cujos nomes são dados. O novo chaveiro é escrito no STDOUT ou em um arquivo dado pela opção --output. Use juntamente com --armor para enviar essas chaves.             
+Exporta todas as chaves de todos os chaveiros (chaveiros padrões e aqueles registrados pela opção --keyring), ou se ao 
+menos um nome é dado, exporta esses cujos nomes são dados. O novo chaveiro é escrito no STDOUT ou em um arquivo dado 
+pela opção --output. Use juntamente com --armor para enviar essas chaves.             
    
         --send-keys key IDs
-Similar ao comando --export, mas envia as chaves para um servidor de chaves. As fingerprints podem ser usadas no lugar dos key IDs. A opção --keyserver deve ser usada para se dar o nome desse servidor de chaves. Não envie seu chaveiro completo para o servidor de chaves --- selecione apenas aquelas chaves que são novas ou modificadas por você. Se nenhuma key IDs for fornecida, o gpg não fará nada.               
+Similar ao comando --export, mas envia as chaves para um servidor de chaves. As fingerprints podem ser usadas no lugar 
+dos key IDs. A opção --keyserver deve ser usada para se dar o nome desse servidor de chaves. Não envie seu chaveiro 
+completo para o servidor de chaves --- selecione apenas aquelas chaves que são novas ou modificadas por você. Se nenhuma 
+key IDs for fornecida, o gpg não fará nada.               
 
 
        --export-secret-keys
  
        --export-secret-subkeys
-O mesmo de --export, mas exporta as chaves secretas. Não é normalmente útil e há risco de segurança. A segunda forma do comando tem uma propriedade especial de tornar a parte secreta da chave primária inútil; essa é uma extensão GNU para OpenPGP e não se deve esperar outras implementações para importar com êxito tal chave. Veja a opção --simple-sk-checksum se você quiser importar uma chave exportada com alguma implementação mais antiga do OpenPGP.
+O mesmo de --export, mas exporta as chaves secretas. Não é normalmente útil e há risco de segurança. A segunda forma do 
+comando tem uma propriedade especial de tornar a parte secreta da chave primária inútil; essa é uma extensão GNU para 
+OpenPGP e não se deve esperar outras implementações para importar com êxito tal chave. Veja a opção --simple-sk-checksum 
+se você quiser importar uma chave exportada com alguma implementação mais antiga do OpenPGP.
    
         --import
 
@@ -240,54 +267,84 @@ O mesmo de --export, mas exporta as chaves secretas. Não é normalmente útil e
 Importa/funde chaves. Isso adiciona as chaves dadas no chaveiro. A versão mais rápida é atualmente só um sinônimo.
 
 
-Existem algumas outras opções que controlam como esses comandos funcionam. O mais notável aqui é a opção --import-options merge-only que não insere novas chaves, mas somente faz a fusão de novas assinaturas, user-IDs e subchaves.
+Existem algumas outras opções que controlam como esses comandos funcionam. O mais notável aqui é a opção 
+--import-options merge-only que não insere novas chaves, mas somente faz a fusão de novas assinaturas, user-IDs e 
+subchaves.
            
 --recv-keys key IDs
-Importa as chaves com as IDs das chaves fornecidas de um servidor de chaves. A opção --keyserver deve ser usada para fornecer o nome desse servidor de chaves.
+Importa as chaves com as IDs das chaves fornecidas de um servidor de chaves. A opção --keyserver deve ser usada para 
+fornecer o nome desse servidor de chaves.
            
 --refresh-keys
-Solicita uma atualização de um servidor de chaves para chaves que já existe no chaveiro local. Isto é útil para enviar uma chave com suas assinaturas mais recentes, IDs de usuários, etc. Fazer essa chamada sem argumentos irá atualizar todo o chaveiro. A opção --keyserver deve ser usada para fornecer o nome do servidor de chaves para todas as chaves que não possuem definidos seus servidores de chaves preferidos (veja --keyserver-options honor-keyserver-url).
+Solicita uma atualização de um servidor de chaves para chaves que já existe no chaveiro local. Isto é útil para enviar 
+uma chave com suas assinaturas mais recentes, IDs de usuários, etc. Fazer essa chamada sem argumentos irá atualizar todo 
+o chaveiro. A opção --keyserver deve ser usada para fornecer o nome do servidor de chaves para todas as chaves que não 
+possuem definidos seus servidores de chaves preferidos (veja --keyserver-options honor-keyserver-url).
            
 --search-keys nomes
-Busca o servidor de chaves para os nomes dados. Múltiplos nomes fornecidos serão agrupados juntos para criar uma cadeia de pesquisa para o servidor de chaves. A opção --keyserver deve ser usada para fornecer o nome desse servidor. Servidores de chaves que suportam diferentes métodos de busca permitem o uso de uma sintaxe especificada logo abaixo em "Como especificar um ID de usuário". Note que diferentes tipos de servidores de chaves suportam diferentes métodos de pesquisas. Atualmente, somente o LDAP suporta todos eles.
+Busca o servidor de chaves para os nomes dados. Múltiplos nomes fornecidos serão agrupados juntos para criar uma cadeia 
+de pesquisa para o servidor de chaves. A opção --keyserver deve ser usada para fornecer o nome desse servidor. 
+Servidores de chaves que suportam diferentes métodos de busca permitem o uso de uma sintaxe especificada logo abaixo em 
+"Como especificar um ID de usuário". Note que diferentes tipos de servidores de chaves suportam diferentes métodos de 
+pesquisas. Atualmente, somente o LDAP suporta todos eles.
            
 --fetch-keys URIs
-Recupera chaves localizadas nos URIs especificados. Note que diferentes instalações do GnuPG podem suportar diferentes protocolos (HTTP,  FTP,  LDAP, etc.).
+Recupera chaves localizadas nos URIs especificados. Note que diferentes instalações do GnuPG podem suportar diferentes 
+protocolos (HTTP,  FTP,  LDAP, etc.).
 
 
        --update-trustdb
-Fazer uma manutenção confiável no banco de dados. Esse comando itera sobre todas as chaves e construções do Web of Trust. Este é um comando interativo porque ele pode ter que perguntar sobre a “ownertrust” para as chaves. O usuário deve informar uma estimação de quanto ele confia no dono da chave mostrada para certificar corretamente (assinar) outras chaves. O GnuPG pergunta pelo ownertrust somente se ele não tiver assinado a uma chave. Usando o menu --edit-key, o valor atribuído pode ser alterado a qualquer hora.
+Fazer uma manutenção confiável no banco de dados. Esse comando itera sobre todas as chaves e construções do Web of Trust. 
+Este é um comando interativo porque ele pode ter que perguntar sobre a “ownertrust” para as chaves. O usuário deve 
+informar uma estimação de quanto ele confia no dono da chave mostrada para certificar corretamente (assinar) outras 
+chaves. O GnuPG pergunta pelo ownertrust somente se ele não tiver assinado a uma chave. Usando o menu --edit-key, o 
+valor atribuído pode ser alterado a qualquer hora.
 
 
        --check-trustdb
-Fazer uma manutenção confiável no banco de dados sem interação do usuário. De tempo em tempo o banco de dados confiável deve ser atualizado para que chaves ou assinaturas expiradas e as mudanças resultantes no Web of Trust possam ser rastreadas. Normalmente, o GnuPG irá calcular quando for necessário e fazer isso automaticamente a menos que o --no-auto-check-trustdb esteja definido. Esse comando pode ser usado para forçar um banco de dados confiável realizar uma checagem a qualquer hora. O processamento é idêntico ao --update-trustdb, mas esse comando pula chaves que não possuem o valor "ownertrust" definidos.
+Fazer uma manutenção confiável no banco de dados sem interação do usuário. De tempo em tempo o banco de dados confiável 
+deve ser atualizado para que chaves ou assinaturas expiradas e as mudanças resultantes no Web of Trust possam ser 
+rastreadas. Normalmente, o GnuPG irá calcular quando for necessário e fazer isso automaticamente a menos que o 
+--no-auto-check-trustdb esteja definido. Esse comando pode ser usado para forçar um banco de dados confiável realizar 
+uma checagem a qualquer hora. O processamento é idêntico ao --update-trustdb, mas esse comando pula chaves que não 
+possuem o valor "ownertrust" definidos.
 
 
-Para o uso com trabalhos cronometrados, esse comando pode ser usado junto com --batch quando a verificação do banco de dados confiável é feita somente se essa verificação for necessária. Para forçar uma execução mesmo no modo batch adicione a opção --yes.
+Para o uso com trabalhos cronometrados, esse comando pode ser usado junto com --batch quando a verificação do banco de 
+dados confiável é feita somente se essa verificação for necessária. Para forçar uma execução mesmo no modo batch 
+adicione a opção --yes.
 
 
        --export-ownertrust
-Manda os valores ownertrust para STDOUT. É útil para propósito de backups já que esses valores são os únicos que não podem ser recriados de um banco de dados confiável corrompido. Exemplo:
+Manda os valores ownertrust para STDOUT. É útil para propósito de backups já que esses valores são os únicos que não 
+podem ser recriados de um banco de dados confiável corrompido. Exemplo:
                               gpg --export-ownertrust > otrust.txt
 
 
        --import-ownertrust
-Atualiza o banco de dados confiável com os valores de ownertrust guardados em arquivos (ou STDIN se não forem dados); valores já existentes serão sobreescritos. Em caso de um banco de dados severamente danificado e se você possuir um backup recente dos valores ownertrust (por exemplo, no arquivo 'otrust.txt', você deve recriar o banco de dados confiável usando estes comandos:
+Atualiza o banco de dados confiável com os valores de ownertrust guardados em arquivos (ou STDIN se não forem dados); 
+valores já existentes serão sobreescritos. Em caso de um banco de dados severamente danificado e se você possuir um 
+backup recente dos valores ownertrust (por exemplo, no arquivo 'otrust.txt', você deve recriar o banco de dados 
+confiável usando estes comandos:
                               cd ~/.gnupg
                               rm trustdb.gpg
                               gpg --import-ownertrust < otrust.txt
  
          --rebuild-keydb-caches
-Quando for atualizado da versão 1.0.6 para a 1.0.7 esse comando deve ser usado para criar caches de assinaturas em um chaveiro. Pode ser conveniente em outras situações também.                 
+Quando for atualizado da versão 1.0.6 para a 1.0.7 esse comando deve ser usado para criar caches de assinaturas em um 
+chaveiro. Pode ser conveniente em outras situações também.                 
    
         --print-md algoritmo
 
 
            --print-mds
-Imprime uma breve mensagem do algoritmo ALGO para todos os arquivos ou STDIN. Em uma segunda forma (ou apenas com "*" como ‘algo’) é mostrado um breve resumo para todos os algoritmos disponíveis.
+Imprime uma breve mensagem do algoritmo ALGO para todos os arquivos ou STDIN. Em uma segunda forma (ou apenas com "*" 
+como ‘algo’) é mostrado um breve resumo para todos os algoritmos disponíveis.
    
         --gen-random 0|1|2
-Emite um contador bits aleatórios no nível de qualidade passado. Se o contador não é dado ou é zero, uma sequencia infinita de bits aleatórios será emitida. POR FAVOR, não use esse comando a menos que você saiba o que você está fazendo; ele pode remover uma entropia preciosa do sistema!
+Emite um contador bits aleatórios no nível de qualidade passado. Se o contador não é dado ou é zero, uma sequencia 
+infinita de bits aleatórios será emitida. POR FAVOR, não use esse comando a menos que você saiba o que você está fazendo; 
+ele pode remover uma entropia preciosa do sistema!
            
 --gen-prime mode bits
                           Use a origem, Luke :-). O formato de saída ainda está sujeito a alterações.
@@ -296,7 +353,8 @@ Emite um contador bits aleatórios no nível de qualidade passado. Se o contador
 
 
            --dearmor
-Comprime ou descomprime uma entrada arbitrária de/a partir de uma blindagem do OpenPGP ASCII. Essa é uma extensão GnuPG para OpenPGP e geralmente não é muito útil.
+Comprime ou descomprime uma entrada arbitrária de/a partir de uma blindagem do OpenPGP ASCII. Essa é uma extensão GnuPG 
+para OpenPGP e geralmente não é muito útil.
 
 
 Como administrar suas chaves
@@ -306,70 +364,107 @@ Essa sessão explica os principais comandos para o gerenciamento de chaves
 --gen-key
 Gera um novo par de chaves. Esse comando é normalmente usado apenas de forma interativa.                  
                     
-Existe uma característica experimental que permite que você crie chaves no modo batch. Veja o arquivo  ‘doc/DETAILS’ na distribuição fonte em como usar isso.
+Existe uma característica experimental que permite que você crie chaves no modo batch. Veja o arquivo  ‘doc/DETAILS’ na 
+distribuição fonte em como usar isso.
  
  
            --gen-revoke nome
-Gera um certificado de revogação para uma chave completa. Para revogar uma subchave ou uma assinatura, use o comando --edit.
+Gera um certificado de revogação para uma chave completa. Para revogar uma subchave ou uma assinatura, use o comando 
+--edit.
            
 --desig-revoke nome
-Gera um certificado de revogação designada para uma chave. Isso permite um usuário (com permissão ou keyholder) de revogar a chave de alguém.
+Gera um certificado de revogação designada para uma chave. Isso permite um usuário (com permissão ou keyholder) de 
+revogar a chave de alguém.
            
 --edit-key
-Mostra um menu que permite que você de fazer mais tarefas relacionadas ao gerenciamento de chaves. Este comando espera a especificação de uma chave pela linha de comando.
+Mostra um menu que permite que você de fazer mais tarefas relacionadas ao gerenciamento de chaves. Este comando espera 
+a especificação de uma chave pela linha de comando.
 
 
 uid n   Seleção de um ID de usuário ou um ID fotográfico de usuário de índice n. Use 0 para desmarcar todos.
                   
 key n  Seleção de uma subchave de índice n. Use 0 para desmarcar todos.
                   
-sign   Crie uma assinatura na chave no nome do usuário Se a chave ainda não está registrada por um usuário padrão (ou usuários dados com -u), o programa mostra a informação da chave outra vez, junto com sua fingerprint e pergunta se ela deve ser assinada. Essa questão é repetida para todos os usuários especificados com –u.
+sign   Crie uma assinatura na chave no nome do usuário Se a chave ainda não está registrada por um usuário padrão (ou 
+usuários dados com -u), o programa mostra a informação da chave outra vez, junto com sua fingerprint e pergunta se ela 
+deve ser assinada. Essa questão é repetida para todos os usuários especificados com –u.
                   
-lsign  O mesmo de “sign”, mas a assinatura é marcada como não exportável e nunca poderá ser usada por outros. Deve ser usado para criar chaves válidas apenas em um ambiente local
+lsign  O mesmo de “sign”, mas a assinatura é marcada como não exportável e nunca poderá ser usada por outros. Deve ser 
+usado para criar chaves válidas apenas em um ambiente local
                   
 nrsign O mesmo de “sign”, mas a assinatura é marcada como não recuperável e portando pode nunca ser revogada.
                   
-tsign  Faça uma assinatura confiável. Isso é uma assinatura que combina as noções de certificação (como uma assinatura regular), e confiável (como o comando “trust”). Costuma ser útil somente em comunidades distintas ou grupos.
+tsign  Faça uma assinatura confiável. Isso é uma assinatura que combina as noções de certificação (como uma assinatura 
+regular), e confiável (como o comando “trust”). Costuma ser útil somente em comunidades distintas ou grupos.
 
 
-Note que “l” (para local / não exportável), “nr” (para não recuperável, e “t”(para confiável)) podem ser livremente misturados e prefixados ao “sign” para criar uma assinatura de qualquer tipo desejado.
+Note que “l” (para local / não exportável), “nr” (para não recuperável, e “t”(para confiável)) podem ser livremente 
+misturados e prefixados ao “sign” para criar uma assinatura de qualquer tipo desejado.
                   
-delsig   Deleta uma assinatura. Note que não é possível remover uma assinatura, uma vez que ela foi enviada ao publico (isto é, para um servidor de chaves). Nesse caso você deverá usar o revsig.
+delsig   Deleta uma assinatura. Note que não é possível remover uma assinatura, uma vez que ela foi enviada ao publico 
+(isto é, para um servidor de chaves). Nesse caso você deverá usar o revsig.
                    
-revsig Revoga uma assinatura. Para cada assinatura que foi gerada por uma das chaves secretas, o GnuPG pergunta se o certificado de revogação deve ser gerado.
+revsig Revoga uma assinatura. Para cada assinatura que foi gerada por uma das chaves secretas, o GnuPG pergunta se o 
+certificado de revogação deve ser gerado.
                   
 check  Verifica as assinaturas em todos os IDs de usuários selecionados.
                   
 adduid Cria um ID de usuário adicional.
                   
 addphoto
-Cria um ID de usuário fotográfico. Isso irá induzir a um arquivo JPEG que será incorporado no ID do usuário. Note que um JPEG muito grande irá criar uma chave muito grande. Note também que alguns programas irá mostrar seu JPEG sem alterações (GnuPG), e alguns programas irão redimensiona-lo para caber em uma dialog box (PGP).
+Cria um ID de usuário fotográfico. Isso irá induzir a um arquivo JPEG que será incorporado no ID do usuário. Note que 
+um JPEG muito grande irá criar uma chave muito grande. Note também que alguns programas irá mostrar seu JPEG sem 
+alterações (GnuPG), e alguns programas irão redimensiona-lo para caber em uma dialog box (PGP).
             
 showphoto
                          Mostra o ID de usuário fotográfico.
                   
-deluid Deleta um ID de usuário ou um ID de usuário fotográfico. Note que não é possível remover um usuário, uma vez que ele foi enviado ao publico (isto é, para um servidor de chaves). Nesse caso você deverá usar o revuid.
+deluid Deleta um ID de usuário ou um ID de usuário fotográfico. Note que não é possível remover um usuário, uma vez que 
+ele foi enviado ao publico (isto é, para um servidor de chaves). Nesse caso você deverá usar o revuid.
                   
 revuid Revoga um ID de usuário ou um ID de usuário fotográfico.
          
 primary        
-Marca o usuário atual como o primário, remove as marcações de usuário primário de todos os usuários e define o timestamp de todas as auto-assinaturas afetadas para um segundo a frente. Note que definindo um ID de usuário fotográfico como primário irá torná-lo primário sobre todos os outos IDs de usuários fotográficos, e definindo um ID de usuário comum como primário irá torna-lo primário sobre todos IDs de usuários comuns.
+Marca o usuário atual como o primário, remove as marcações de usuário primário de todos os usuários e define o timestamp 
+de todas as auto-assinaturas afetadas para um segundo a frente. Note que definindo um ID de usuário fotográfico como 
+primário irá torná-lo primário sobre todos os outos IDs de usuários fotográficos, e definindo um ID de usuário comum 
+como primário irá torna-lo primário sobre todos IDs de usuários comuns.
              
  keyserver
-Define um servidor de chaves preferido para o ID(s) de usuário especificado. Isso irá permitir que outros usuários saibam aonde você prefere que eles acessem sua chave. Veja --keyserver-options honor-keyserver-url para saber mais. A definição de um valor como “nada” remove um servidor de chave preferido existente.
+Define um servidor de chaves preferido para o ID(s) de usuário especificado. Isso irá permitir que outros usuários 
+saibam aonde você prefere que eles acessem sua chave. Veja --keyserver-options honor-keyserver-url para saber mais. A 
+definição de um valor como “nada” remove um servidor de chave preferido existente.
                   
 notation
-Define uma notação nome=valor para um ID(s) de usuário especifico. Veja --cert-notation para saber mais. A definição de um valor como “nada” remove todas as notações, definindo uma notação prefixada com um sinal de menos (-) remove essa notação, e definindo um nome para uma notação (sem o =valor) prefixada com um sinal de menos remove todas as notações com aquele nome.
+Define uma notação nome=valor para um ID(s) de usuário especifico. Veja --cert-notation para saber mais. A definição de 
+um valor como “nada” remove todas as notações, definindo uma notação prefixada com um sinal de menos (-) remove essa 
+notação, e definindo um nome para uma notação (sem o =valor) prefixada com um sinal de menos remove todas as notações 
+com aquele nome.
  
-pref   Lista as preferências de um ID de usuário selecionado. Isso mostra as preferências atuais, sem incluir nenhuma preferência implícita.
+pref   Lista as preferências de um ID de usuário selecionado. Isso mostra as preferências atuais, sem incluir nenhuma 
+preferência implícita.
                   
 showpref
-Mais preferências listadas para o ID de usuário selecionado. Isso mostra as preferências em efeito pela inclusão de preferências implícitas do 3DES (cipher), SHA-1 (digest), e Descompactado (compactação) se elas não estiverem inclusas na lista de preferências. Como complemento, o servidor de chaves preferido e as notações de assinaturas (se existir alguma) são mostrados.
+Mais preferências listadas para o ID de usuário selecionado. Isso mostra as preferências em efeito pela inclusão de 
+preferências implícitas do 3DES (cipher), SHA-1 (digest), e Descompactado (compactação) se elas não estiverem inclusas 
+na lista de preferências. Como complemento, o servidor de chaves preferido e as notações de assinaturas (se existir 
+alguma) são mostrados.
                   
 setpref string
-Define a lista preferências do ID de usuário para string para todos (ou somente os selecionados) IDs de usuários. A chamada do setpref sem argumentos define a lista de preferência como default (seja built-in ou definido via --default-preference-list), e a chamada do setpref com “nada” como argumento define uma lista de preferência vazia. Use o gpg --version para obter a lista de algoritmos disponíveis. Note que enquanto você muda as preferências em um atributo ID de usuário (também conhecido como “ID fotográfico”), o GnuPG não seleciona chaves através de atributos de IDs de usuários logo essas preferêmcoas não serão usadas pelo GnuPG.
+Define a lista preferências do ID de usuário para string para todos (ou somente os selecionados) IDs de usuários. A 
+chamada do setpref sem argumentos define a lista de preferência como default (seja built-in ou definido via 
+--default-preference-list), e a chamada do setpref com “nada” como argumento define uma lista de preferência vazia. Use 
+o gpg --version para obter a lista de algoritmos disponíveis. Note que enquanto você muda as preferências em um atributo 
+ID de usuário (também conhecido como “ID fotográfico”), o GnuPG não seleciona chaves através de atributos de IDs de 
+usuários logo essas preferêmcoas não serão usadas pelo GnuPG.
                     
-Quando se está definindo as preferencias, você deve listar os algoritmos na ordem em que você gostaria de vê-los serem usados por alguém quando vão criptografar uma mensagem para a sua chave. Se você não incluir o 3DES, ele será automaticamente adicionado ao final. Note que existem vários fatores que são levados em conta ao se escolher um algoritmo (por exemplo, sua chave pode não ser a única destinatária), então a aplicação remota do OpenPGP que está sendo usada para enviar pra você pode ou não seguir exatamente a ordem escolhida para a mensagem. Isto irá, portanto, apenas escolher um algoritmo que está presente na lista de preferência de cada chave destinatária. Veja também em INTEROPERABILIDADE COM OUTROS PROGRAMAS DO OPENPGP na seção abaixo.
+Quando se está definindo as preferencias, você deve listar os algoritmos na ordem em que você gostaria de vê-los serem 
+usados por alguém quando vão criptografar uma mensagem para a sua chave. Se você não incluir o 3DES, ele será 
+automaticamente adicionado ao final. Note que existem vários fatores que são levados em conta ao se escolher um 
+algoritmo (por exemplo, sua chave pode não ser a única destinatária), então a aplicação remota do OpenPGP que está 
+sendo usada para enviar pra você pode ou não seguir exatamente a ordem escolhida para a mensagem. Isto irá, portanto, 
+apenas escolher um algoritmo que está presente na lista de preferência de cada chave destinatária. Veja também em 
+INTEROPERABILIDADE COM OUTROS PROGRAMAS DO OPENPGP na seção abaixo.
                  
 addkey  Adiciona uma subchave a essa chave.
             
@@ -377,7 +472,11 @@ addkey  Adiciona uma subchave a essa chave.
                            Gera uma subchave em um card e adiciona-a a essa chave.                         
                   
 Keytocard
-Transfere a subchave secreta selecionada (ou a chave primária se nenhuma sub chave foi selecionada) para o smartcard. A chave secreta no chaveiro irá ser trocada por um stub se a chave puder ser armazenada com sucesso no card e você poderá usar o comando 'save' posteriormente. Apenas determinados tipos de chaves podem ser transferidas para o card. Um sub menu permitirá você selecionar em qual card guardar sua chave. Note que é possível retirar a chave de volta do card – se o card quebrar, sua chave secreta será perdida ao menos que você tenha um backup em algum lugar.
+Transfere a subchave secreta selecionada (ou a chave primária se nenhuma sub chave foi selecionada) para o smartcard. A 
+chave secreta no chaveiro irá ser trocada por um stub se a chave puder ser armazenada com sucesso no card e você poderá 
+usar o comando 'save' posteriormente. Apenas determinados tipos de chaves podem ser transferidas para o card. Um sub 
+menu permitirá você selecionar em qual card guardar sua chave. Note que é possível retirar a chave de volta do card – se 
+o card quebrar, sua chave secreta será perdida ao menos que você tenha um backup em algum lugar.
  
 bkuptocard file
 Restaura o arquivo dado ao card. Esse comando pode ser usado para restaurar uma chave de backup (gerada durante a inicialização do card) em um novo card. Em quase todos os casos será a chave criptografada. Você deve usar esse comando apenas com a chave pública correspondente e ter certeza de que o arquivo passado como argumento é de fato o backup para a restauração. Depois você deve selecionar 2 para restaurar como uma chave criptográfica. Você primeiro será perguntado a entrar com a frase secreta/passphrase da chave do backup e depois para o PIN do Admin do card.
