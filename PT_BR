@@ -479,15 +479,22 @@ menu permitirá você selecionar em qual card guardar sua chave. Note que é pos
 o card quebrar, sua chave secreta será perdida ao menos que você tenha um backup em algum lugar.
  
 bkuptocard file
-Restaura o arquivo dado ao card. Esse comando pode ser usado para restaurar uma chave de backup (gerada durante a inicialização do card) em um novo card. Em quase todos os casos será a chave criptografada. Você deve usar esse comando apenas com a chave pública correspondente e ter certeza de que o arquivo passado como argumento é de fato o backup para a restauração. Depois você deve selecionar 2 para restaurar como uma chave criptográfica. Você primeiro será perguntado a entrar com a frase secreta/passphrase da chave do backup e depois para o PIN do Admin do card.
+Restaura o arquivo dado ao card. Esse comando pode ser usado para restaurar uma chave de backup (gerada durante a 
+inicialização do card) em um novo card. Em quase todos os casos será a chave criptografada. Você deve usar esse comando 
+apenas com a chave pública correspondente e ter certeza de que o arquivo passado como argumento é de fato o backup para 
+a restauração. Depois você deve selecionar 2 para restaurar como uma chave criptográfica. Você primeiro será perguntado 
+a entrar com a frase secreta/passphrase da chave do backup e depois para o PIN do Admin do card.
                   
-delkey Remove uma subchave (chave secundária). Note que não é possível remover a subchave, uma vez que ela foi enviada ao publico (isto é, para o servidor de chaves). Nesse caso você deve usar revkey.
+delkey Remove uma subchave (chave secundária). Note que não é possível remover a subchave, uma vez que ela foi enviada 
+ao publico (isto é, para o servidor de chaves). Nesse caso você deve usar revkey.
                   
 revkey Revoga uma subchave.
                   
-expire Muda o tempo para expirar de uma chave ou subchave. Se uma subchave é selecionada, o tempo de expiração dessa subchave será alterado. Sem seleção, a chave de expiração da chave primária é alterada.
+expire Muda o tempo para expirar de uma chave ou subchave. Se uma subchave é selecionada, o tempo de expiração dessa 
+subchave será alterado. Sem seleção, a chave de expiração da chave primária é alterada.
                   
-trust  Troca o valor de owner trust para a chave. Isso atualiza o banco de dados confiável imediatamente não é necessário salvar.
+trust  Troca o valor de owner trust para a chave. Isso atualiza o banco de dados confiável imediatamente não é 
+necessário salvar.
 
 
                           disable
@@ -496,28 +503,39 @@ enable Desativa ou ativa uma chave por completo. Uma chave desativada normalment
 
 
 addrevoker
-Adiciona um revogador designado para a chave. Isso leva um argumento opcional: “sensitive”. Se um determinado revogador é marcado como sensível, por padrão ele não poderá ser exportado (veja export-options).
+Adiciona um revogador designado para a chave. Isso leva um argumento opcional: “sensitive”. Se um determinado revogador 
+é marcado como sensível, por padrão ele não poderá ser exportado (veja export-options).
           
                 passwd   Muda a passprhase de uma chave secreta.
           
                 toggle     Alterna entre listagem publica ou secreta de chaves.
 
 
-clean  Compacta (removendo todas as assinaturas exceto as auto assinadas) qualquer ID de usuário que não é mais utilizado (isto é, revogado ou expirado). Depois, remove qualquer assinatura que não é utilizada pelo cálculo confiável. Especificamente, isto remove qualquer assinatura que não valida, qualquer assinatura que é substituída por uma assinatura mais tardia, assinaturas revogadas, e assinaturas emitidas por chaves que não estão mais presentes no chaveiro.
+clean  Compacta (removendo todas as assinaturas exceto as auto assinadas) qualquer ID de usuário que não é mais 
+utilizado (isto é, revogado ou expirado). Depois, remove qualquer assinatura que não é utilizada pelo cálculo confiável. 
+Especificamente, isto remove qualquer assinatura que não valida, qualquer assinatura que é substituída por uma 
+assinatura mais tardia, assinaturas revogadas, e assinaturas emitidas por chaves que não estão mais presentes no 
+chaveiro.
   
                           minimize
-Cria a mínima chave possível. Isso remove todas as assinaturas de cada ID de usuário exceto para a auto assinatura mais recente.                         
+Cria a mínima chave possível. Isso remove todas as assinaturas de cada ID de usuário exceto para a auto assinatura mais 
+recente.                         
 
 
                     cross-certify
-Adiciona assinaturas de certificado cruzado para assinar subchaves que podem não tê-las. Assinaturas de certificado cruzado protegem contra um ataque subto contra subchaves assinadas. Veja --require-cross-certification. Todas as novas chaves geradas possuem essa assinatura por padrão, portanto essa opção é útil apenas para atualizar chaves antigas.
+Adiciona assinaturas de certificado cruzado para assinar subchaves que podem não tê-las. Assinaturas de certificado 
+cruzado protegem contra um ataque subto contra subchaves assinadas. Veja --require-cross-certification. Todas as novas 
+chaves geradas possuem essa assinatura por padrão, portanto essa opção é útil apenas para atualizar chaves antigas.
   
                  save   Salva todas as mudanças no chaveiro e sai.
 
 
                       quit   Sai do programa sem atualizar os chaveiros.
                     
-A listagem mostra para você a chave juntamente com sua chave secundária e todos seus ids de usuários. O ID de usuário primário é indicado por um ponto, e chaves selecionadas ou ids de usuários são indicados por um asterisco. O valor trust é mostrado junto com a chave primária: primeiro é o owner trust atribuído e por segundo temos o valor do trust calculado. Letras são usadas para os valores:
+A listagem mostra para você a chave juntamente com sua chave secundária e todos seus ids de usuários. O ID de usuário 
+primário é indicado por um ponto, e chaves selecionadas ou ids de usuários são indicados por um asterisco. O valor trust 
+é mostrado junto com a chave primária: primeiro é o owner trust atribuído e por segundo temos o valor do trust calculado. 
+Letras são usadas para os valores:
                   
 -          Sem ownertrust atribuído/não calculado ainda.
           
@@ -537,34 +555,44 @@ m          Marginalmente confiável.
 Assina uma chave pública com sua chave secreta. Este é um atalho para o sub comando “sign” de --edit.
    
         --lsign-key nome
-Assina uma chave pública com sua chave secreta, mas marcam elas como não exportáveis. Este é um atalho para o sub comando “lsing” de --edit-key.
+Assina uma chave pública com sua chave secreta, mas marcam elas como não exportáveis. Este é um atalho para o sub 
+comando “lsing” de --edit-key.
   
 OPÇÕES
 O gpg possui várias opções para controlar o comportamento exato e trocar as configurações padrão.
 
 
-Opções longas podem ser colocadas em um arquivo de opções (default “/.gnupg/gpg.conf”). Opções curtas não irão funcionar – por exemplo, “armor” é uma opção válida para o arquivo de opções, enquanto “a” não é. Não escreva 2 traços, mas simplesmente o nome da opção e qualquer argumento necessário. Linhas com hash (‘#’) como o primeiro caractere em espaço não branco são ignoradas. Comandos podem ser colocados nesse arquivo também, mas isso não é geralmente útil, pois o comando irá executar automaticamente a cada execução do gpg.
+Opções longas podem ser colocadas em um arquivo de opções (default “/.gnupg/gpg.conf”). Opções curtas não irão funcionar 
+– por exemplo, “armor” é uma opção válida para o arquivo de opções, enquanto “a” não é. Não escreva 2 traços, mas 
+simplesmente o nome da opção e qualquer argumento necessário. Linhas com hash (‘#’) como o primeiro caractere em espaço 
+não branco são ignoradas. Comandos podem ser colocados nesse arquivo também, mas isso não é geralmente útil, pois o 
+comando irá executar automaticamente a cada execução do gpg.
                     
-Por favor, lembre-se de que o option parsing(analisador) pára assim que uma não opção é encontrada, você pode explicitamente parar o analisador usando a opção especial --.
+Por favor, lembre-se de que o option parsing(analisador) pára assim que uma não opção é encontrada, você pode 
+explicitamente parar o analisador usando a opção especial --.
  
    Como mudar a configuração
 Essas opções são usadas para modificar a configuração e são geralmente encontradas no arquivo de opção.
            
 --default-key nome
-Use um nome para uma chave padrão para assiná-la. Se essa opção não for usada, a chave padrão será a primeira chave encontrada no chaveiro secreto. Note que –u ou --local-user sobrescreve essa opção.
+Use um nome para uma chave padrão para assiná-la. Se essa opção não for usada, a chave padrão será a primeira chave 
+encontrada no chaveiro secreto. Note que –u ou --local-user sobrescreve essa opção.
       
  --default-recipient nome
-Use um nome para um recipiente padrão se a opção --recipient não é usada e não pergunta se é um recipiente válido. O nome não deve ser vazio.
+Use um nome para um recipiente padrão se a opção --recipient não é usada e não pergunta se é um recipiente válido. O 
+nome não deve ser vazio.
                
 --default-recipient-self
-Use uma chave padrão como recipiente se a opção --recipient não for usada e não pergunta se é válido. A chave padrão é a primeira para o chaveiro secreto ou aquela definida com --default-key.
+Use uma chave padrão como recipiente se a opção --recipient não for usada e não pergunta se é válido. A chave padrão é a 
+primeira para o chaveiro secreto ou aquela definida com --default-key.
 
 
  --no-default-recipient
                     Reseta --default-recipient e --default-recipient-self.
                    
 -v, --verbose
-                    Fornece mais informações durante o processamento. Se for usado duas vezes, o conteúdo da saída é listado detalhadamente.             
+                    Fornece mais informações durante o processamento. Se for usado duas vezes, o conteúdo da saída é 
+listado detalhadamente.             
  
            --no-verbose
                           Reseta o verbose para o nível 0.
@@ -575,23 +603,31 @@ Use uma chave padrão como recipiente se a opção --recipient não for usada e 
 --batch
            
 --no-batch
-Usa o modo batch. Nunca pergunta, não permite comandos interativos. --no-batch  desativa essa opção. Note que mesmo com um nome de arquivo passado pela linha de comando, o gpg ainda precisa ler de STDIN (em particular se o gpg souber que a entrada é uma assinatura separada e nenhum arquivo de dados foi especificado). Então se você não quer sustentar dados via o STDIN, você deve conectar o STDIN ao ‘/dev/null’.
+Usa o modo batch. Nunca pergunta, não permite comandos interativos. --no-batch  desativa essa opção. Note que mesmo com 
+um nome de arquivo passado pela linha de comando, o gpg ainda precisa ler de STDIN (em particular se o gpg souber que a 
+entrada é uma assinatura separada e nenhum arquivo de dados foi especificado). Então se você não quer sustentar dados 
+via o STDIN, você deve conectar o STDIN ao ‘/dev/null’.
            
 --no-tty
-Certifica-se de que o TTY (terminal) nunca é usado para qualquer saída. Essa opção é necessária em alguns casos, pois algumas vezes o GnuPG imprime alguns alertas para o TTY mesmo se --batch for usado.
+Certifica-se de que o TTY (terminal) nunca é usado para qualquer saída. Essa opção é necessária em alguns casos, pois 
+algumas vezes o GnuPG imprime alguns alertas para o TTY mesmo se --batch for usado.
            
 --yes  Assume “sim” na maioria das perguntas.
            
 --no   Assume "não" na maioria das perguntas.
            
 --list-options parâmetros
-É uma cadeia delimitada por espaço ou vírgula que mostra opções usadas quando se lista chaves e assinaturas (isto é, as funções --list-keys, --list-sigs, --list-public-keys, --list-secret-keys, e o --edit-key). As opções podem ser prefixadas com um no- (depois de dois traços) para dar o sentido oposto. As opções são:
+É uma cadeia delimitada por espaço ou vírgula que mostra opções usadas quando se lista chaves e assinaturas (isto é, as 
+funções --list-keys, --list-sigs, --list-public-keys, --list-secret-keys, e o --edit-key). As opções podem ser 
+prefixadas com um no- (depois de dois traços) para dar o sentido oposto. As opções são:
 
 
 
 
 show-photos
-Lista --list-keys, --list-sigs, --list-public-keys, e --list-secret-keys para mostrar qualquer foto de ID anexada à chave. O padrão é não.  Veja também --photo-viewer. Não funciona com --with-colons: veja --attribute-fd para forma apropriada de obter dados sobre as fotos para scripts e frontends.
+Lista --list-keys, --list-sigs, --list-public-keys, e --list-secret-keys para mostrar qualquer foto de ID anexada à 
+chave. O padrão é não.  Veja também --photo-viewer. Não funciona com --with-colons: veja --attribute-fd para forma 
+apropriada de obter dados sobre as fotos para scripts e frontends.
 
 
 
@@ -607,7 +643,8 @@ show-std-notations
 
 
 show-user-notations
-Mostra todas, padrão IETF, ou user-defined signature notations in the notação de assinatura de definição de usuário em --list-sigs ou listagem --check-sigs. O padrão é não.
+Mostra todas, padrão IETF, ou user-defined signature notations in the notação de assinatura de definição de usuário em 
+--list-sigs ou listagem --check-sigs. O padrão é não.
 
 
 show-keyserver-urls
@@ -627,7 +664,8 @@ Exibe sub-chaves revogadas e expiradas em uma listagem de chaves. O padrão é n
 
 
 show-keyring
-Exibe o nome do chaveiro no cabeçalho da listagem de chaves para indicar em qual chaveiro uma dada chave está. O padrão é não. 
+Exibe o nome do chaveiro no cabeçalho da listagem de chaves para indicar em qual chaveiro uma dada chave está. O padrão 
+é não. 
 
 
 show-sig-expire
@@ -635,15 +673,20 @@ Exibe a data de expiração da assinatura (se existir) durante --list-sigs ou li
 
 
 show-sig-subpackets
-Inclui sub-pacotes de assinatura na lista de chaves. Essa opção pode ter uma lista de argumentos opcional de sub-pacotes na lista. Se nenhum argumento for passado, lista todos os sub-pacotes. O padrão é não. Essa opção só é útil quando utilizando --with-colons com --list-sigs ou --check-sigs.
+Inclui sub-pacotes de assinatura na lista de chaves. Essa opção pode ter uma lista de argumentos opcional de sub-pacotes 
+na lista. Se nenhum argumento for passado, lista todos os sub-pacotes. O padrão é não. Essa opção só é útil quando 
+utilizando --with-colons com --list-sigs ou --check-sigs.
 
 
 --verify-options parameters
-É uma string delimitada por espaço ou vírgula que dá opções utilizadas na verificação de assinaturas. Opções pode ser prefixado com um `não-' para dar o significado oposto. As opções são:
+É uma string delimitada por espaço ou vírgula que dá opções utilizadas na verificação de assinaturas. Opções pode ser 
+prefixado com um `não-' para dar o significado oposto. As opções são:
 
 
 show-photos
-Exibe --list-keys, --list-sigs, --list-public-keys, e --list-secret-keys para mostrar qualquer foto de ID anexada à chave. O padrão é não.  Veja também --photo-viewer. Não funciona com --with-colons: veja --attribute-fd para forma apropriada de obter dados sobre as fotos para scripts e frontends.
+Exibe --list-keys, --list-sigs, --list-public-keys, e --list-secret-keys para mostrar qualquer foto de ID anexada à 
+chave. O padrão é não.  Veja também --photo-viewer. Não funciona com --with-colons: veja --attribute-fd para forma 
+apropriada de obter dados sobre as fotos para scripts e frontends.
 
 
 
@@ -659,7 +702,8 @@ show-std-notations
 
 
 show-user-notations
-Mostra todas, padrão IETF, ou user-defined signature notations in the notação de assinatura de definição de usuário em --list-sigs ou listagem --check-sigs. O padrão é não.
+Mostra todas, padrão IETF, ou user-defined signature notations in the notação de assinatura de definição de usuário em 
+--list-sigs ou listagem --check-sigs. O padrão é não.
 
 
 show-keyserver-urls
@@ -677,42 +721,59 @@ Exibe listagens de chaves de IDs de usuários revogadas e expiradas. O padrão �
 
 
 show-primary-uid-only
-Exibe somente o ID de usuário primário durante a verificação de assinatura. Isto é, todas as linhas AKA bem como fotos de IDs não são mostrados com o status de verificação de assinatura.
+Exibe somente o ID de usuário primário durante a verificação de assinatura. Isto é, todas as linhas AKA bem como fotos 
+de IDs não são mostrados com o status de verificação de assinatura.
 
 
 pka-lookups
-Permite pesquisas de PKA para verificar os endereços do remetente. Note que PKA é baseado em DNS, e assim, ao permitir esta opção pode-se divulgar informações sobre quando e quais assinaturas são verificadas ou para quem dados são criptografados. Este é semelhante ao "bug web" descrito para a característica auto-key-retrieve.
+Permite pesquisas de PKA para verificar os endereços do remetente. Note que PKA é baseado em DNS, e assim, ao permitir 
+esta opção pode-se divulgar informações sobre quando e quais assinaturas são verificadas ou para quem dados são 
+criptografados. Este é semelhante ao "bug web" descrito para a característica auto-key-retrieve.
 
 
 pka-trust-increase
 
 
-Aumenta completamente a confiança em uma assinatura se a mesma passar na validação PKA. Essa opção só faz sentido se a opção pka-lookups estiver definida.
+Aumenta completamente a confiança em uma assinatura se a mesma passar na validação PKA. Essa opção só faz sentido se a 
+opção pka-lookups estiver definida.
 
 
 --enable-dsa2
 
 
 --disable-dsa2
-Permite truncamento de hash para todas as chaves DSA mesmo as chaves antigas DSA de até 1024 bits. Este também é o padrão com --openpgp. Note que versões mais antigas do GnuPG também requerem que esta flag permita a geração de DSA maior que 1024 bit.
+Permite truncamento de hash para todas as chaves DSA mesmo as chaves antigas DSA de até 1024 bits. Este também é o 
+padrão com --openpgp. Note que versões mais antigas do GnuPG também requerem que esta flag permita a geração de DSA 
+maior que 1024 bit.
 
 
 --photo-viewer string
-Esta é a linha de comando que deve ser executada para vizualizar uma foto de ID. "% i" será expandido para um nome de arquivo que contendo a foto. "% I" faz o mesmo, exceto que o arquivo não será excluído uma vez que o vizualizador exista. Outras flags são "k%" para o ID da chave, "K%" para a ID de chave longa, "f%" para a impressão digital (fingerprint) da chave, "% t" para a extensão do tipo de imagem (por exemplo, "jpg"), "% T "para o tipo de MIME da imagem (por exemplo," imagem / jpeg "), e"%% "para um sinal de percentagem real. Se nem i% ou% I estiverem presentes, a foto será, então, fornecida ao visualizador no formato padrão.
+Esta é a linha de comando que deve ser executada para vizualizar uma foto de ID. "% i" será expandido para um nome de 
+arquivo que contendo a foto. "% I" faz o mesmo, exceto que o arquivo não será excluído uma vez que o vizualizador exista. 
+Outras flags são "k%" para o ID da chave, "K%" para a ID de chave longa, "f%" para a impressão digital (fingerprint) da 
+chave, "% t" para a extensão do tipo de imagem (por exemplo, "jpg"), "% T "para o tipo de MIME da imagem (por exemplo," 
+imagem / jpeg "), e"%% "para um sinal de percentagem real. Se nem i% ou% I estiverem presentes, a foto será, então, 
+fornecida ao visualizador no formato padrão.
 
 
-O visualizador padrão é "STDIN 'xloadimage -fork -quiet -title 'KeyID 0x%k' STDIN". Note que se o seu programa visualizador de imagens não for seguro, então executá-lo utilizando GnuPG não o torna seguro.
+O visualizador padrão é "STDIN 'xloadimage -fork -quiet -title 'KeyID 0x%k' STDIN". Note que se o seu programa 
+visualizador de imagens não for seguro, então executá-lo utilizando GnuPG não o torna seguro.
 
 
 
 
 --exec-path string
-Define uma lista de diretórios para pesquisar visualizadores de fotos e ajudantes keyserver. Se não for fornecido, ajudantes keyserver usam o diretório padrão compilado,   os vizualizadores de fotos usam a variável de ambiente $PATH. Note, que no sistema W32 esse valor é ignorado na busca de ajudantes keyserver.
+Define uma lista de diretórios para pesquisar visualizadores de fotos e ajudantes keyserver. Se não for fornecido, 
+ajudantes keyserver usam o diretório padrão compilado,   os vizualizadores de fotos usam a variável de ambiente $PATH. 
+Note, que no sistema W32 esse valor é ignorado na busca de ajudantes keyserver.
 
 
 --keyring file
-Adiciona arquivo a lista de chaveros corrente. Se o arquivo começa com '~/' os mesmos são substituídos pelo diretório $HOME. Se o nome do arquivo não posuir '/' assume-se que ele está localizado no diretório home do GnuPG ("~/.gnupg" if --homedir or $GNUPGHOME não é utilizado).
-Note que isso adiciona um chaveiro a lista corrente. Se a intenção for de utlizar o chaveiro epecificado sozinho, utilize --keyring juntamente com --no-default-keyring.
+Adiciona arquivo a lista de chaveros corrente. Se o arquivo começa com '~/' os mesmos são substituídos pelo diretório 
+$HOME. Se o nome do arquivo não posuir '/' assume-se que ele está localizado no diretório home do GnuPG ("~/.gnupg" if 
+--homedir or $GNUPGHOME não é utilizado).
+Note que isso adiciona um chaveiro a lista corrente. Se a intenção for de utlizar o chaveiro epecificado sozinho, 
+utilize --keyring juntamente com --no-default-keyring.
 
 
 --secret-keyring file
@@ -720,15 +781,21 @@ Semelhante a --keyring mas para o chaveiro secreto.
 
 
 --primary-keyring file
-Designa um arquivo como chabeiro público primário. Isto significa que as chaves recentemente importadas (via --import ou keyserver --recv-from) irão para esse chaveiro.
+Designa um arquivo como chabeiro público primário. Isto significa que as chaves recentemente importadas (via --import ou 
+keyserver --recv-from) irão para esse chaveiro.
 
 
 --trustdb-name file
-Usa arquivo ao invés de trustdb padrão. Se o arquivo começa com '~/' os mesumos são substituídos pelo diretório $HOME. Se o nome do arquivo não posuir '/' assume-se que ele está localizado no diretório home do GnuPG ("~/.gnupg" if --homedir or $GNUPGHOME não é utilizado).
+Usa arquivo ao invés de trustdb padrão. Se o arquivo começa com '~/' os mesumos são substituídos pelo diretório $HOME. 
+Se o nome do arquivo não posuir '/' assume-se que ele está localizado no diretório home do GnuPG ("~/.gnupg" if 
+--homedir or $GNUPGHOME não é utilizado).
 
 
 --homedir dir
-Define o nome do diretório hom to dir. Se esta opção não é utilizada, o diretório home padrão  aponta para '~/.gnupg'. Ele somente é reconhecido quando dado na linha de comando. Ele também substitui qualquer diretório home definido através da variável de ambiente `GNUPGHOME" ou (em sistemas W32), por meio da entrada de registo 'HKCU\Software\GNU\GnuPG:HomeDir'.
+Define o nome do diretório hom to dir. Se esta opção não é utilizada, o diretório home padrão  aponta para '~/.gnupg'. 
+Ele somente é reconhecido quando dado na linha de comando. Ele também substitui qualquer diretório home definido através 
+da variável de ambiente `GNUPGHOME" ou (em sistemas W32), por meio da entrada de registo 
+'HKCU\Software\GNU\GnuPG:HomeDir'.
 
 
 
@@ -736,19 +803,30 @@ Define o nome do diretório hom to dir. Se esta opção não é utilizada, o dir
 
 
 --pcsc-driver file
-Utiliza arquivo para acessar o leitor de smartcard. O padrão corrente é 'libpcsclite.so.1' para sistemas baseados em GLIBC, '/System/Library/Frameworks/PCSC.framework/PCSC' para MAC OS X, 'winscard.dll' para Windows e 'libpcclite.so' para outros sistemas.
+Utiliza arquivo para acessar o leitor de smartcard. O padrão corrente é 'libpcsclite.so.1' para sistemas baseados em 
+GLIBC, '/System/Library/Frameworks/PCSC.framework/PCSC' para MAC OS X, 'winscard.dll' para Windows e 'libpcclite.so' 
+para outros sistemas.
 
 
 --disable-ccid
-Desativa o suporte integrado para os leitores compatíveis com CCID. Isso permite voltar para um dos outros drivers, mesmo se o driver interno CCID puder lidar com o leitor. Note, que o suporte ao CCID só está disponível se libusb estiver disponível no momento da construção.
+Desativa o suporte integrado para os leitores compatíveis com CCID. Isso permite voltar para um dos outros drivers, 
+mesmo se o driver interno CCID puder lidar com o leitor. Note, que o suporte ao CCID só está disponível se libusb 
+estiver disponível no momento da construção.
 
 
 --reader-port number_or_string
-Esta opção pode ser utilizada para indicar a porta do terminal de cartões. Um valor de 0 refere-se ao primeiro dispositivo serial; adicione 32.768 para acessar dispositivos USB. O padrão é 32768 (primeiro dispositivo USB). PC / SC ou leitores CCID pode precisar de uma string aqui; execute o programa no modo verbose para obter uma lista de leitores disponíveis. O padrão é, então, o primeiro leitor encontrado.
+Esta opção pode ser utilizada para indicar a porta do terminal de cartões. Um valor de 0 refere-se ao primeiro 
+dispositivo serial; adicione 32.768 para acessar dispositivos USB. O padrão é 32768 (primeiro dispositivo USB). PC / SC 
+ou leitores CCID pode precisar de uma string aqui; execute o programa no modo verbose para obter uma lista de leitores 
+disponíveis. O padrão é, então, o primeiro leitor encontrado.
 
 
 --display-charset name
-Define o nome do conjunto de caracteres nativo. Isto é usado para converter algumas strings como IDs de usuário para codificação UTF-8 adequada. Note que isso não tem nada a ver com o conjunto de caracteres de dados a sejam criptografados ou assinados; GnuPG não recodifica dados fornecidos pelo usuário. Se essa opção não for usada, o conjunto de caracteres padrão é determinado a partir da localização atual. A nível de detalhamento de 3 mostra o conjunto escolhido. Os valores válidos para nome são:
+Define o nome do conjunto de caracteres nativo. Isto é usado para converter algumas strings como IDs de usuário para 
+codificação UTF-8 adequada. Note que isso não tem nada a ver com o conjunto de caracteres de dados a sejam criptografados 
+ou assinados; GnuPG não recodifica dados fornecidos pelo usuário. Se essa opção não for usada, o conjunto de caracteres 
+padrão é determinado a partir da localização atual. A nível de detalhamento de 3 mostra o conjunto escolhido. Os valores 
+válidos para nome são:
 
 
 iso-8859-1
@@ -775,15 +853,19 @@ Ignore todas as traduções e assuma que o sistema operacional usa a codificaç�
 
 
 --no-utf8-strings
-Assuma que os argumentos de linha de comando são dadas como strings UTF8. O padrão (- no-utf8-strings) é assumir que os argumentos são codificados no conjunto de caracteres especificado pelo --display-charset. Essas opções afetam todos os argumentos a seguir. Ambas as opções podem ser usadas várias vezes.
+Assuma que os argumentos de linha de comando são dadas como strings UTF8. O padrão (- no-utf8-strings) é assumir que os 
+argumentos são codificados no conjunto de caracteres especificado pelo --display-charset. Essas opções afetam todos os 
+argumentos a seguir. Ambas as opções podem ser usadas várias vezes.
 
 
 --options arquivo
-Lê opções do arquivo e não tenta  lê-las a partir das opções padrões do arquivo homedir (veja --homedir). Esta opção é ignorada se usada em um arquivo de opções. 
+Lê opções do arquivo e não tenta  lê-las a partir das opções padrões do arquivo homedir (veja --homedir). Esta opção é 
+ignorada se usada em um arquivo de opções. 
 
 
 --no-options
-Atalho para --options  /dev/null. Esta opção é detectada antes de uma tentativa de abrir um arquivo de opção. Usar esta opção também evita a criação de um`~ /. gnupg ' homedir.
+Atalho para --options  /dev/null. Esta opção é detectada antes de uma tentativa de abrir um arquivo de opção. Usar esta 
+opção também evita a criação de um`~ /. gnupg ' homedir.
 
 
 -z n
@@ -793,25 +875,35 @@ Atalho para --options  /dev/null. Esta opção é detectada antes de uma tentati
 
 
 --bzip2-compress-level n
-Define o nível de compressão de n para os algoritmos de compressão ZIP e ZLIB. O padrão é usar o nível de compressão padrão de ZLIB (normalmente 6). --bzip2-compress-level define o nível de compressão para o algoritmo de compressão BZIP2 (com padrão de 6 também). Esta é uma opção diferente de --compress-level uma vez que BZIP2 utiliza uma grande quantidade de memória, para cada nível de compressão adicional. -z define ambos. Um valor de 0 para n desativa a compressão.
+Define o nível de compressão de n para os algoritmos de compressão ZIP e ZLIB. O padrão é usar o nível de compressão 
+padrão de ZLIB (normalmente 6). --bzip2-compress-level define o nível de compressão para o algoritmo de compressão BZIP2 
+(com padrão de 6 também). Esta é uma opção diferente de --compress-level uma vez que BZIP2 utiliza uma grande quantidade 
+de memória, para cada nível de compressão adicional. -z define ambos. Um valor de 0 para n desativa a compressão.
 
 
 --bzip2-decompress-lowmem
-Usa um método diferente para descompressão de arquivos BZIP2. Este método alternativo usa um pouco mais de metade da memória, mas também funciona à metade da velocidade. Isso é útil em circunstâncias extremas de pouca memória quando o arquivo foi originalmente comprimido em alto --bzip2-compress-level.
+Usa um método diferente para descompressão de arquivos BZIP2. Este método alternativo usa um pouco mais de metade da 
+memória, mas também funciona à metade da velocidade. Isso é útil em circunstâncias extremas de pouca memória quando o 
+arquivo foi originalmente comprimido em alto --bzip2-compress-level.
 
 
 --mangle-dos-filenames
 
 
 --no-mangle-dos-filenames
-Uma versão mais antiga do Windows não pode lidar com nomes de arquivos com mais de um ponto. --mangle-dos-filenames faz com que o GnuPG substitua (em vez de adicionar a) a extensão de um arquivo de saída para evitar este problema. Esta opção é desativada por padrão e não tem efeito sobre plataformas não-Windows.
+Uma versão mais antiga do Windows não pode lidar com nomes de arquivos com mais de um ponto. --mangle-dos-filenames faz 
+com que o GnuPG substitua (em vez de adicionar a) a extensão de um arquivo de saída para evitar este problema. Esta 
+opção é desativada por padrão e não tem efeito sobre plataformas não-Windows.
 
 
 --ask-cert-level
 
 
 --no-ask-cert-level
-Ao fazer a assinatura da chave, solicite um nível de certificação. Se essa opção não for especificada, o nível de certificação utilizado é definido através de --default-cert-level.  Veja  --default-cert-level para obter informações sobre os níveis específicos e como eles são usados. --no-ask-cert-level desativa essa opção. Esta opção está padronizada em não.
+Ao fazer a assinatura da chave, solicite um nível de certificação. Se essa opção não for especificada, o nível de 
+certificação utilizado é definido através de --default-cert-level.  Veja  --default-cert-level para obter informações 
+sobre os níveis específicos e como eles são usados. --no-ask-cert-level desativa essa opção. Esta opção está padronizada 
+em não.
 
 
 
@@ -823,16 +915,24 @@ O padrão a ser usado para o nível de verificação ao assinar uma chave.
 0 significa que não deseja fazer nenhuma reivindicação em particular em relação a forma como se verifica a chave.
 
 
-1 significa que você acredita que a chave é de propriedade da pessoa que alega a possuir, mas você não pôde, ou não verificou a chave de nenhuma maneira. Isso é útil para uma verificação de "persona”, onde você assina a chave de um usuário pseudónimo.
+1 significa que você acredita que a chave é de propriedade da pessoa que alega a possuir, mas você não pôde, ou não 
+verificou a chave de nenhuma maneira. Isso é útil para uma verificação de "persona”, onde você assina a chave de um 
+usuário pseudónimo.
 
 
-2 significa que você fez uma verificação normal da chave. Por exemplo, isso pode significar que você verificou a impressão digital da chave e verificou o ID do usuário na chave em relação ao documento de identidade.
+2 significa que você fez uma verificação normal da chave. Por exemplo, isso pode significar que você verificou a 
+impressão digital da chave e verificou o ID do usuário na chave em relação ao documento de identidade.
 
 
-3 significa que você fez a verificação exaustiva da chave. Por exemplo, isto poderia significar que verificou a impressão digital da chave com o proprietário da chave, em pessoa, e que você checou, em um documento de dificil falsificação com uma foto de ID (tal como um passaporte) que o nome do proprietário da chave corresponde ao nome de usuário do ID na chave e, finalmente, que verificou (por troca de e-mail) que o endereço de email da chave pertence ao proprietário da chave.
+3 significa que você fez a verificação exaustiva da chave. Por exemplo, isto poderia significar que verificou a 
+impressão digital da chave com o proprietário da chave, em pessoa, e que você checou, em um documento de dificil 
+falsificação com uma foto de ID (tal como um passaporte) que o nome do proprietário da chave corresponde ao nome de 
+usuário do ID na chave e, finalmente, que verificou (por troca de e-mail) que o endereço de email da chave pertence ao 
+proprietário da chave.
 
 
-Note-se que os exemplos dados para os níveis 2 e 3 são apenas isso: exemplos. No final, cabe a você decidir o que "casual" e "exaustiva" significa para você.
+Note-se que os exemplos dados para os níveis 2 e 3 são apenas isso: exemplos. No final, cabe a você decidir o que 
+"casual" e "exaustiva" significa para você.
 
 
 Esta opção está padronizada para 0 (nenhum pedido particular).
@@ -841,13 +941,17 @@ Esta opção está padronizada para 0 (nenhum pedido particular).
 
 
 --min-cert-level
-Durante a construção de um banco de dados de confiança, trate quaisquer assinaturas com um nível de certificação abaixo deste como inválida. O padrão é 2, que desconsidera assinaturas de nível 1. Note que assinaturas de nível 0 "nenhuma reclamação particulares" são sempre aceitas.
+Durante a construção de um banco de dados de confiança, trate quaisquer assinaturas com um nível de certificação abaixo 
+deste como inválida. O padrão é 2, que desconsidera assinaturas de nível 1. Note que assinaturas de nível 0 "nenhuma 
+reclamação particulares" são sempre aceitas.
 
 
 
 
 --trusted-key long key ID
-Suponha que a chave especificada (que deve ser dada como um ID da chave de 8 byte completa) é tão confiável como uma de suas próprias chaves secretas. Esta opção é útil se você não quer manter suas chaves secretas (ou um deles) online mas ainda quer ser capaz de verificar a validade de um destinatário dado ou a chave do assinante.
+Suponha que a chave especificada (que deve ser dada como um ID da chave de 8 byte completa) é tão confiável como uma de 
+suas próprias chaves secretas. Esta opção é útil se você não quer manter suas chaves secretas (ou um deles) online mas 
+ainda quer ser capaz de verificar a validade de um destinatário dado ou a chave do assinante.
 
 
 --trust-model pgp|classic|direct|always|auto
@@ -855,7 +959,8 @@ Defina qual modelo de confiança o GnuPG deve seguir. Os modelos são:
 
 
 pgp    
-Este é o Web of Trust combinado com assinaturas de confiança como usados ​​em PGP 5.x e posterior. Este é o modelo de confiança padrão ao se criar um novo banco de dados de confiança.
+Este é o Web of Trust combinado com assinaturas de confiança como usados ​​em PGP 5.x e posterior. Este é o modelo de 
+confiança padrão ao se criar um novo banco de dados de confiança.
 
 
 classic
@@ -867,18 +972,23 @@ A validade da chave é definida diretamente pelo usuário e não calculada atrav
 
 
 always 
-Ignora a validação da chave e assume que as chaves utilizadas são sempre totalmente confiáveis. Você geralmente não vai usar isto a menos que você está usando algum esquema de validação externa. Esta opção também suprime a tag "[incerto]" impressa com verificações da assinatura quando não há nenhuma evidência de que o ID de utilizador está ligado à tecla.
+Ignora a validação da chave e assume que as chaves utilizadas são sempre totalmente confiáveis. Você geralmente não vai 
+usar isto a menos que você está usando algum esquema de validação externa. Esta opção também suprime a tag "[incerto]" 
+impressa com verificações da assinatura quando não há nenhuma evidência de que o ID de utilizador está ligado à tecla.
 
 
 auto   
-Seleciona o modelo de confiança dependendo do que quer que seja que o banco de dados interna de confiança diz. Este é o modelo padrão, se esse banco de dados já existe.
+Seleciona o modelo de confiança dependendo do que quer que seja que o banco de dados interna de confiança diz. Este é o 
+modelo padrão, se esse banco de dados já existe.
 
 
 --auto-key-locate parameters
 
 
 --no-auto-key-locate
-GnuPG pode automaticamente localizar e recuperar chaves caso necessário usando essa opção. Isso acontece quando a criptografia para um endereço de e-mail (no campo "user@example.com"), e não há chaves user@example.com no chaveiro local. Esta opção utiliza qualquer número dos seguintes mecanismos, na ordem em que serão testados:
+GnuPG pode automaticamente localizar e recuperar chaves caso necessário usando essa opção. Isso acontece quando a 
+criptografia para um endereço de e-mail (no campo "user@example.com"), e não há chaves user@example.com no chaveiro 
+local. Esta opção utiliza qualquer número dos seguintes mecanismos, na ordem em que serão testados:
 
 
 cert   
@@ -890,7 +1000,8 @@ Localiza uma chave usando DNS PKA.
 
 
 ldap   
-Usando DNS Service Discovery, verificar o domínio em questão para quaisquer servidores de chaves LDAP para uso. Se isso não funcionar, tente localizar a chave usando o método de verificação PGP Universal "ldap://keys.(thedomain)''.
+Usando DNS Service Discovery, verificar o domínio em questão para quaisquer servidores de chaves LDAP para uso. Se isso 
+não funcionar, tente localizar a chave usando o método de verificação PGP Universal "ldap://keys.(thedomain)''.
 
 
 keyserver
@@ -898,83 +1009,121 @@ Localiza uma chave usando qualquer servidor de chaves que for definido utilizand
 
 
 keyserver-URL
-Além disso, um servidor de chaves URL usado na opção --keyserver pode ser utilizado aqui para consultar aquele keyserver particular.
+Além disso, um servidor de chaves URL usado na opção --keyserver pode ser utilizado aqui para consultar aquele keyserver 
+particular.
 
 
 local  
-Localiza a chave usando os chaveiros locais. Este mecanismo permite selecionar a ordem como pesquisa de chaves local é feita. Dessa forma, utilizar '--auto-key-locate local'' é idêntico a utilizar --no-auto-key-locate.
+Localiza a chave usando os chaveiros locais. Este mecanismo permite selecionar a ordem como pesquisa de chaves local é 
+feita. Dessa forma, utilizar '--auto-key-locate local'' é idêntico a utilizar --no-auto-key-locate.
 
 
 nodefault
-Esta flag desativa a pesquisa local padrão de chave, feita antes que qualquer um dos mecanismos definidos pelo --auto-key-locate serem testados. A posição deste mecanismo na lista não importa. Não é necessário se o comando local também for utilizado.
+Esta flag desativa a pesquisa local padrão de chave, feita antes que qualquer um dos mecanismos definidos pelo 
+--auto-key-locate serem testados. A posição deste mecanismo na lista não importa. Não é necessário se o comando local 
+também for utilizado.
 
 
 --keyid-format short|0xshort|long|0xlong
-Seleciona como exibir IDs de chave. "Short" é o ID da chave tradicional de 8 caracteres. "Long" é a mais preciso (mas menos conveniente) ID da chave de 16 caracteres. Adicione um "0x" no início do ID de chave assim como em 0x99242560.
+Seleciona como exibir IDs de chave. "Short" é o ID da chave tradicional de 8 caracteres. "Long" é a mais preciso (mas 
+menos conveniente) ID da chave de 16 caracteres. Adicione um "0x" no início do ID de chave assim como em 0x99242560.
 sentido, aqui não há nenhum
 
 
 --keyserver name
-Usa o nome como seu servidor de chaves. Este é o servidor com que --recv-keys, --send-keys, e --search-keys irão se comunicar para receber as chaves de, enviar chaves, e procure por elas. O formato do nome é uma URI: `scheme:[//]keyservername[:port]’ O esquema é o tipo de servidor de chaves: "hkp" para o HTTP (ou compatíveis) servidores de chaves, "ldap" para os servidores de chaves LDAP, ou "mailto" para o servidor de chaves e-mail Graff. Note que a sua instalação do GnuPG podem ter outros tipos de keyserver disponíveis também. Sistemas de servidor de chaves são case-insensitive. Após o nome do servidor de chaves, as opções de configuração keyserver podem ser fornecidas. Estes são os mesmos que o global --keyserver-options abaixo, mas aplicam-se apenas a este servidor particular.
+Usa o nome como seu servidor de chaves. Este é o servidor com que --recv-keys, --send-keys, e --search-keys irão se 
+comunicar para receber as chaves de, enviar chaves, e procure por elas. O formato do nome é uma URI: 
+`scheme:[//]keyservername[:port]’ O esquema é o tipo de servidor de chaves: "hkp" para o HTTP (ou compatíveis) 
+servidores de chaves, "ldap" para os servidores de chaves LDAP, ou "mailto" para o servidor de chaves e-mail Graff. 
+Note que a sua instalação do GnuPG podem ter outros tipos de keyserver disponíveis também. Sistemas de servidor de 
+chaves são case-insensitive. Após o nome do servidor de chaves, as opções de configuração keyserver podem ser fornecidas. 
+Estes são os mesmos que o global --keyserver-options abaixo, mas aplicam-se apenas a este servidor particular.
 
 
-A maioria dos servidores de chaves sincroniza entre si, de modo que é, geralmente, não é necessário para enviar chaves para mais de um servidor. O servidor de chaves hkp://keys.gnupg.net usa DNS round robin para lhe dar um servidor de chaves diferente a cada vez que você usá-lo.
+A maioria dos servidores de chaves sincroniza entre si, de modo que é, geralmente, não é necessário para enviar chaves 
+para mais de um servidor. O servidor de chaves hkp://keys.gnupg.net usa DNS round robin para lhe dar um servidor de 
+chaves diferente a cada vez que você usá-lo.
 
 
 
 
 --keyserver-options name=value1
-Esta é uma string delimitada por espaço ou vírgula que dá opções para o servidor de chaves. As opções podem ser prefixados com um `não’ para dar o significado oposto. Opções válidas de importação-exportação podem ser usadas aqui também para aplicar à importação de (--recv-key) ou exportação (--send-key) uma chave de um servidor de chaves. Embora nem todas as opções estão disponíveis para todos os tipos de servidor de chaves, algumas opções mais comuns são:
+Esta é uma string delimitada por espaço ou vírgula que dá opções para o servidor de chaves. As opções podem ser 
+prefixados com um `não’ para dar o significado oposto. Opções válidas de importação-exportação podem ser usadas aqui 
+também para aplicar à importação de (--recv-key) ou exportação (--send-key) uma chave de um servidor de chaves. Embora 
+nem todas as opções estão disponíveis para todos os tipos de servidor de chaves, algumas opções mais comuns são:
 
 
 
 
 include-revoked
-Ao procurar por uma chave com --search-keys, as buscas incluem chaves que são marcadas no servidor de chaves como revogadas. Note que nem todos os servidores de chaves diferenciam as chaves entre revogadas e não revogados, e para tais servidores de chaves esta opção não tem significado. Note também que a maioria dos servidores de chaves não tem verificação criptográfica de suas revogações de chaves, e assim desativar essa opção pode resultar em perda de chaves que estão marcadas incorretamente como revogadas.
+Ao procurar por uma chave com --search-keys, as buscas incluem chaves que são marcadas no servidor de chaves como 
+revogadas. Note que nem todos os servidores de chaves diferenciam as chaves entre revogadas e não revogados, e para tais 
+servidores de chaves esta opção não tem significado. Note também que a maioria dos servidores de chaves não tem 
+verificação criptográfica de suas revogações de chaves, e assim desativar essa opção pode resultar em perda de chaves 
+que estão marcadas incorretamente como revogadas.
 
 
 include-disabled
-Ao procurar por uma chave com o comando --search-keys, incluir chaves que são marcadas no servidor de chaves como desabilitadas. Note que esta opção não é utilizada com servidores de chaves HKP.
+Ao procurar por uma chave com o comando --search-keys, incluir chaves que são marcadas no servidor de chaves como 
+desabilitadas. Note que esta opção não é utilizada com servidores de chaves HKP.
 
 
 auto-key-retrieve
-Esta opção permite a recuperação automática de chaves de um servidor de chaves ao verificar assinaturas feitas por chaves que não estão no chaveiro local. Note que esta opção torna comportamentos como "bug web" possíveis. Operadores de servidores de chaves podem ver as chaves que você solicitar, assim, enviando-lhe uma mensagem assinada por uma chave nova (que você naturalmente não terá em seu chaveiro local), o operador pode dizer tanto o seu endereço IP e o tempo que você levou para verificar a assinatura .
+Esta opção permite a recuperação automática de chaves de um servidor de chaves ao verificar assinaturas feitas por 
+chaves que não estão no chaveiro local. Note que esta opção torna comportamentos como "bug web" possíveis. Operadores 
+de servidores de chaves podem ver as chaves que você solicitar, assim, enviando-lhe uma mensagem assinada por uma chave 
+nova (que você naturalmente não terá em seu chaveiro local), o operador pode dizer tanto o seu endereço IP e o tempo 
+que você levou para verificar a assinatura .
 
 
 honor-keyserver-url
-Ao usar --refresh-keys, se a chave em questão tem uma URL de servidor de chaves preferida, então usar esse servidor de chaves preferido para atualizar a chave. Além disso, se auto-key-retrieve estiver definido, e com a assinatura sendo verificado tem uma URL de servidor de chaves preferida, em seguida, usar esse servidor de chaves preferido para ir buscar a chave. O padrão é sim.
+Ao usar --refresh-keys, se a chave em questão tem uma URL de servidor de chaves preferida, então usar esse servidor de 
+chaves preferido para atualizar a chave. Além disso, se auto-key-retrieve estiver definido, e com a assinatura sendo 
+verificado tem uma URL de servidor de chaves preferida, em seguida, usar esse servidor de chaves preferido para ir 
+buscar a chave. O padrão é sim.
 
 
 honor-pka-record
-Se auto-key-retrieve estiver definido, e a assinatura sendo verificada tiver um registro PKA, então, usar a informação PKA para buscar a chave. O padrão é sim.
+Se auto-key-retrieve estiver definido, e a assinatura sendo verificada tiver um registro PKA, então, usar a informação 
+PKA para buscar a chave. O padrão é sim.
 
 
               include-subkeys
-Ao receber uma chave, incluir subchaves como alvos potenciais. Note que esta opção não é utilizada com servidores de chaves HKP, pois eles não suportam a obtenção de chaves por id de subchave .
+Ao receber uma chave, incluir subchaves como alvos potenciais. Note que esta opção não é utilizada com servidores de 
+chaves HKP, pois eles não suportam a obtenção de chaves por id de subchave .
 
 
 
 
               use-temp-files
-Na maioria das plataformas semelhantes ao Unix, o GnuPG comunica com o programa de ajuda do servidor de chaves através de canais , que é o método mais eficiente. Esta opção força o GnuPG a usar arquivos temporários para se comunicar. Em algumas plataformas (como o Win32 e RISC OS), esta opção está sempre ativada.
+Na maioria das plataformas semelhantes ao Unix, o GnuPG comunica com o programa de ajuda do servidor de chaves através 
+de canais , que é o método mais eficiente. Esta opção força o GnuPG a usar arquivos temporários para se comunicar. Em 
+algumas plataformas (como o Win32 e RISC OS), esta opção está sempre ativada.
 
 
               keep-temp-files
-Se estiver usando do ‘use-temp-files', não excluir os arquivos temporários após usá-los. Esta opção é útil para aprender sobre o protocolo de comunicação do servidor de chaves lendo os arquivos temporários.
+Se estiver usando do ‘use-temp-files', não excluir os arquivos temporários após usá-los. Esta opção é útil para aprender 
+sobre o protocolo de comunicação do servidor de chaves lendo os arquivos temporários.
 
 
               verbose
-Diz que o programa de ajuda do servidor de chaves deve ser mais detalhado. Esta opção pode ser repetida várias vezes para aumentar o nível de detalhe.
+Diz que o programa de ajuda do servidor de chaves deve ser mais detalhado. Esta opção pode ser repetida várias vezes 
+para aumentar o nível de detalhe.
 
 
               timeout
-Diz ao programa de ajuda do servidor de chaves por quanto tempo (em segundos) tentar executar uma ação do servidor de chaves antes de desistir. Note que a realização de várias ações ao mesmo tempo utiliza este valor de tempo limite por ação. Por exemplo, durante a recuperação de várias chaves via --recv-keys, o tempo de espera é aplicada separadamente a cada recuperação de chaves, e não para o comando --recv-keys em conjunto. O padrão é 30 segundos.
+Diz ao programa de ajuda do servidor de chaves por quanto tempo (em segundos) tentar executar uma ação do servidor de 
+chaves antes de desistir. Note que a realização de várias ações ao mesmo tempo utiliza este valor de tempo limite por 
+ação. Por exemplo, durante a recuperação de várias chaves via --recv-keys, o tempo de espera é aplicada separadamente a 
+cada recuperação de chaves, e não para o comando --recv-keys em conjunto. O padrão é 30 segundos.
 
 
 http-proxy=value
 
 
-Configura o proxy para usar HTTP e servidores de chaves HKP. Isso substitui a variável de ambiente "http_proxy", se houver.
+Configura o proxy para usar HTTP e servidores de chaves HKP. Isso substitui a variável de ambiente "http_proxy", se 
+houver.
 
 
 max-cert-size
@@ -982,7 +1131,9 @@ Ao recuperar uma chave via DNS CERT, apenas aceitar chaves até este tamanho. O 
 
 
 debug
-Ligue a saída de depuração do programa de ajuda servidor de chaves. Note que os detalhes da saída de depuração depende de em que programa de ajuda de servidor de chaves está sendo usado, e por sua vez, em todas as bibliotecas que o programa de ajuda do servidor de chaves usa internamente (libcurl, openldap, etc).
+Ligue a saída de depuração do programa de ajuda servidor de chaves. Note que os detalhes da saída de depuração depende 
+de em que programa de ajuda de servidor de chaves está sendo usado, e por sua vez, em todas as bibliotecas que o 
+programa de ajuda do servidor de chaves usa internamente (libcurl, openldap, etc).
 
 
             check-cert
@@ -990,7 +1141,10 @@ Ativa verificação de certificado se o servidor de chaves apresentar um (para h
 
 
             ca-cert-file
-Fornece um arquivo de certificado para substituir o padrão do sistema. Esta opção só é necessária se check-cert estiver habilitado e o servidor de chaves estiver usando um certificado que não está presente em uma lista de certificados padrão do sistema. Observe que, dependendo da biblioteca SSL com que o ajudante do servidor de chaves é construído, isso pode, na verdade,  ser um diretório ou um arquivo.
+Fornece um arquivo de certificado para substituir o padrão do sistema. Esta opção só é necessária se check-cert estiver 
+habilitado e o servidor de chaves estiver usando um certificado que não está presente em uma lista de certificados 
+padrão do sistema. Observe que, dependendo da biblioteca SSL com que o ajudante do servidor de chaves é construído, 
+isso pode, na verdade,  ser um diretório ou um arquivo.
 
 
 --completes-needed n
@@ -1008,65 +1162,91 @@ Profundidade máxima de uma cadeia de certificação (o padrão é 5).
 
 
 --simple-sk-checksum
-As chaves secretas têm sua integridade protegida usando uma soma de verificação SHA-1. Este método é parte da especificação do OpenPGP próxima melhorada, mas o GnuPG já o usa como uma contramedida contra certos ataques. Aplicativos antigos não entendem este novo formato, por isso esta opção pode ser utilizada para voltar ao comportamento antigo. Usando esta opção tem um risco de segurança. Observe que usar esta opção só tem efeito quando a chave secreta é criptografado - a maneira mais simples de fazer isso é mudar a senha na chave (mesmo mudando-o para o mesmo valor é aceitável).
+As chaves secretas têm sua integridade protegida usando uma soma de verificação SHA-1. Este método é parte da 
+especificação do OpenPGP próxima melhorada, mas o GnuPG já o usa como uma contramedida contra certos ataques. 
+Aplicativos antigos não entendem este novo formato, por isso esta opção pode ser utilizada para voltar ao comportamento 
+antigo. Usando esta opção tem um risco de segurança. Observe que usar esta opção só tem efeito quando a chave secreta é 
+criptografado - a maneira mais simples de fazer isso é mudar a senha na chave (mesmo mudando-o para o mesmo valor é 
+aceitável).
 
 
 
 
 --no-sig-cache
-Não armazena em cache o estado de verificação de assinaturas chave. Cache dá um desempenho muito melhor em listas de chaves importantes. No entanto, se você suspeita que sua chave pública não está a salvo contra modificações de gravação, você pode usar esta opção para desabilitar o cache. Ele provavelmente não faz sentido desativado, porque todo o tipo de dano pode ser feito se alguém tiver acesso de gravação para o sua chave pública.
+Não armazena em cache o estado de verificação de assinaturas chave. Cache dá um desempenho muito melhor em listas de 
+chaves importantes. No entanto, se você suspeita que sua chave pública não está a salvo contra modificações de gravação, 
+você pode usar esta opção para desabilitar o cache. Ele provavelmente não faz sentido desativado, porque todo o tipo de 
+dano pode ser feito se alguém tiver acesso de gravação para o sua chave pública.
 
 
 --no-sig-create-check
-O GnuPG normalmente verifica cada assinatura imediatamente após a sua criação de proteger contra bugs e falhas de hardware que podem afetar os bits da chave secreta. Esta verificação extra precisa de algum tempo (cerca de 115% para as chaves DSA), e por isso esta opção pode ser usada para desativá-lo. No entanto, devido ao fato de que a criação de assinatura precisa de interação manual, esta penalidade de desempenho não importa na maioria dos ambientes.
+O GnuPG normalmente verifica cada assinatura imediatamente após a sua criação de proteger contra bugs e falhas de 
+hardware que podem afetar os bits da chave secreta. Esta verificação extra precisa de algum tempo (cerca de 115% para 
+as chaves DSA), e por isso esta opção pode ser usada para desativá-lo. No entanto, devido ao fato de que a criação de 
+assinatura precisa de interação manual, esta penalidade de desempenho não importa na maioria dos ambientes.
 
 
 --auto-check-trustdb
 
 
 --no-auto-check-trustdb
-O GnuPG sentir que sua informação sobre a Web of Trust tem de ser atualizado, ele executa automaticamente o comando --check-trustdb internamente. Isto pode ser um processo demorado. --no-auto-check-trustdb desativa essa opção.
+O GnuPG sentir que sua informação sobre a Web of Trust tem de ser atualizado, ele executa automaticamente o comando 
+--check-trustdb internamente. Isto pode ser um processo demorado. --no-auto-check-trustdb desativa essa opção.
 
 
 --use-agent
 
 
 --no-use-agent
-Tente usar o GnuPG-Agent. Com esta opção, o GnuPG primeiro tenta se conectar ao agente antes antes de pedir uma senha. --no-use-agent desativa essa opção.
+Tente usar o GnuPG-Agent. Com esta opção, o GnuPG primeiro tenta se conectar ao agente antes antes de pedir uma senha. 
+--no-use-agent desativa essa opção.
 
 
 --gpg-agent-info
-Substitue o valor da variável de ambiente "GPG_AGENT_INFO”. Isso só é usado quando --use-agent foi dado. Dado que esta opção não é mais utilizada por gpg2, deve ser evitada, se possível.
+Substitue o valor da variável de ambiente "GPG_AGENT_INFO”. Isso só é usado quando --use-agent foi dado. Dado que esta 
+opção não é mais utilizada por gpg2, deve ser evitada, se possível.
 
 
 --lock-once
-Bloqueia o banco de dados na primeira vez que um bloqueio é solicitado e não libera o bloqueio até que o processo termine.
+Bloqueia o banco de dados na primeira vez que um bloqueio é solicitado e não libera o bloqueio até que o processo 
+termine.
 
 
 --lock-multiple
-Libera os bloqueios cada vez que um bloqueio não é mais necessário. Use isso para substituir um anterior --lock-once de um arquivo de configuração.
+Libera os bloqueios cada vez que um bloqueio não é mais necessário. Use isso para substituir um anterior --lock-once de 
+um arquivo de configuração.
 
 
 
 
 --lock-never
-Desativar o bloqueio inteiramente. Esta opção só deve ser usado em ambientes muito especiais, onde pode ter certeza que apenas um processo está acessando os arquivos. A disquete de arranque com um sistema de criptografia autônomo provavelmente vai usar isso. Uso indevido dessa opção pode levar a dados e corrupção de chave.
+Desativar o bloqueio inteiramente. Esta opção só deve ser usado em ambientes muito especiais, onde pode ter certeza que 
+apenas um processo está acessando os arquivos. A disquete de arranque com um sistema de criptografia autônomo 
+provavelmente vai usar isso. Uso indevido dessa opção pode levar a dados e corrupção de chave.
 
 
 
 
 --exit-on-status-write-error
-Esta opção irá causar erros de gravação sobre o estado FD para rescindir imediatamente o processo. Isso deve ser, de fato, o padrão, mas isso nunca funcionou desta forma e, portanto, precisamos de uma opção para habilitar isso, para que a mudança não vá quebrar aplicações que finalizem o estado de um canal fd muito cedo. Esta opção junto com --enable-progress-filter pode ser usada para cancelar operações gpg de longa duração.
+Esta opção irá causar erros de gravação sobre o estado FD para rescindir imediatamente o processo. Isso deve ser, de 
+fato, o padrão, mas isso nunca funcionou desta forma e, portanto, precisamos de uma opção para habilitar isso, para que 
+a mudança não vá quebrar aplicações que finalizem o estado de um canal fd muito cedo. Esta opção junto com 
+--enable-progress-filter pode ser usada para cancelar operações gpg de longa duração.
 
 
 
 
 --limit-card-insert-tries n
-Com n maior do que 0, o número de instruções que pede para inserir um smartcard fica limitado a N-1. Assim, com um valor de 1 gpg não pedirá para inserir um cartão se nenhum tiver sido inserido no arranque. Esta opção é útil no arquivo de configuração no caso de uma aplicação não sabe sobre o apoio do smartcard e espera infinitamente para a inserção de um cartão.
+Com n maior do que 0, o número de instruções que pede para inserir um smartcard fica limitado a N-1. Assim, com um 
+valor de 1 gpg não pedirá para inserir um cartão se nenhum tiver sido inserido no arranque. Esta opção é útil no arquivo 
+de configuração no caso de uma aplicação não sabe sobre o apoio do smartcard e espera infinitamente para a inserção de 
+um cartão.
 
 
 --no-random-seed-file
-GnuPG usa um arquivo para armazenar a sua “piscina” interna aleatório sobre invocações. Isso deixa a geração aleatória mais rápida; as operações de escrita no entanto, por vezes, não são desejadas. Esta opção pode ser utilizada para conseguir com que o custo de geração aleatória seja mais lento.
+GnuPG usa um arquivo para armazenar a sua “piscina” interna aleatório sobre invocações. Isso deixa a geração aleatória 
+mais rápida; as operações de escrita no entanto, por vezes, não são desejadas. Esta opção pode ser utilizada para 
+conseguir com que o custo de geração aleatória seja mais lento.
 
 
 --no-greeting
@@ -1078,10 +1258,14 @@ Suprime o aviso sobre "uso inseguro de memória".
 
 
 --no-permission-warning
-Suprime o aviso sobre o arquivo inseguro e permissões do diretório home (--homedir). Note que a permissão verifica que as performaces do GnuPG não se destinam a ser autoritárias, mas eles simplesmente alertam sobre certos problemas de permissão comuns. Não suponha que a falta de um aviso significa que o seu sistema esteja seguro.
+Suprime o aviso sobre o arquivo inseguro e permissões do diretório home (--homedir). Note que a permissão verifica que 
+as performaces do GnuPG não se destinam a ser autoritárias, mas eles simplesmente alertam sobre certos problemas de 
+permissão comuns. Não suponha que a falta de um aviso significa que o seu sistema esteja seguro.
 
 
-Note que o aviso de não segurança de permissões do --homedir não pode ser suprimida no arquivo gpg.conf, pois isso permitira que um atacante pudesse colocar um arquivo gpg.conf inseguro no lugar, e usar esse arquivo para suprimir avisos sobre si. Os avisos permissões da --homedir só podem ser suprimidos na linha de comando.
+Note que o aviso de não segurança de permissões do --homedir não pode ser suprimida no arquivo gpg.conf, pois isso 
+permitira que um atacante pudesse colocar um arquivo gpg.conf inseguro no lugar, e usar esse arquivo para suprimir 
+avisos sobre si. Os avisos permissões da --homedir só podem ser suprimidos na linha de comando.
 
 
 --no-mdc-warning
@@ -1092,21 +1276,28 @@ Suprime o aviso sobre a falta de proteção de integridade MDC.
 
 
 --no-require-secmem
-Recusar-se a executar se GnuPG não pode conseguir memória segura. O padrão é não. (Ou seja, correr, mas dar uma advertência)
+Recusar-se a executar se GnuPG não pode conseguir memória segura. O padrão é não. (Ou seja, correr, mas dar uma 
+advertência)
 
 
 --require-cross-certification
 
 
 --no-require-cross-certification
-Ao verificar uma assinatura feita a partir de uma subchave, garante que a certificação cruzada "back signature" na subchave esteja presente e seja válida. Isso protege contra um ataque sutil contra subchaves que podem assinar. O padrão é --require-cross-certification para GPG.
+Ao verificar uma assinatura feita a partir de uma subchave, garante que a certificação cruzada "back signature" na 
+subchave esteja presente e seja válida. Isso protege contra um ataque sutil contra subchaves que podem assinar. O padrão 
+é --require-cross-certification para GPG.
 
 
 --expert
 
 
 --no-expert
-Permite que o usuário faça coisas absurdas ou "tolas" como a assinatura de uma chave expirada ou revogada, ou certas coisas potencialmente incompatíveis como gerar tipos de chaves incomuns. Isto também desativa as mensagens de advertência sobre certas ações potencialmente incompatíveis. Como o nome indica, esta opção é para apenas especialistas. Se você não compreender plenamente as implicações do que ele permite que você faça, deixe isso desligado. --no- expert desativa essa opção.
+Permite que o usuário faça coisas absurdas ou "tolas" como a assinatura de uma chave expirada ou revogada, ou certas 
+coisas potencialmente incompatíveis como gerar tipos de chaves incomuns. Isto também desativa as mensagens de 
+advertência sobre certas ações potencialmente incompatíveis. Como o nome indica, esta opção é para apenas especialistas. 
+Se você não compreender plenamente as implicações do que ele permite que você faça, deixe isso desligado. --no- expert 
+desativa essa opção.
 
 
  Key related options
@@ -1116,7 +1307,8 @@ Permite que o usuário faça coisas absurdas ou "tolas" como a assinatura de uma
 
 
 -r     
-Criptografa o nome ID do usuário. Se esta opção ou --hidden-recipient não é especificado, o GnuPG pede pelo id de usuário a menos --default-recipient seja dado.
+Criptografa o nome ID do usuário. Se esta opção ou --hidden-recipient não é especificado, o GnuPG pede pelo id de 
+usuário a menos --default-recipient seja dado.
 
 
 
@@ -1125,15 +1317,23 @@ Criptografa o nome ID do usuário. Se esta opção ou --hidden-recipient não é
 
 
 -R     
-Criptografa o nome ID do usuário, mas oculta o ID da chave da chave do usuário. Esta opção ajuda a esconder o receptor da mensagem e é uma medida preventiva contra a análise de tráfego. Se esta opção ou --recipient não for especificado, o GnuPG pede o ID do usuário a menos --default-recipient seja dado.
+Criptografa o nome ID do usuário, mas oculta o ID da chave da chave do usuário. Esta opção ajuda a esconder o receptor 
+da mensagem e é uma medida preventiva contra a análise de tráfego. Se esta opção ou --recipient não for especificado, o 
+GnuPG pede o ID do usuário a menos --default-recipient seja dado.
 
 
 --encrypt-to name
-Mesmo que --recipient, mas este deve ser utilizado no arquivo de opções e podem ser usadas com a sua própria ID de utilizador na forma de um "encrypt-to-self". Essas chaves são usadas apenas quando há outros destinatários dados, quer pelo uso de --recipient ou por uma id de usuário perguntada. Nenhuma verificação de confiança é realizada para estes IDs de usuário e chaves mesmo com deficiência pode ser usadas.
+Mesmo que --recipient, mas este deve ser utilizado no arquivo de opções e podem ser usadas com a sua própria ID de 
+utilizador na forma de um "encrypt-to-self". Essas chaves são usadas apenas quando há outros destinatários dados, quer 
+pelo uso de --recipient ou por uma id de usuário perguntada. Nenhuma verificação de confiança é realizada para estes IDs 
+de usuário e chaves mesmo com deficiência pode ser usadas.
 
 
 --hidden-encrypt-to name
-Mesma --hidden-recipient mas este é destinado ao uso no arquivo de opções e pode ser usado com o seu próprio user-id como um oculto "encrypt-to-self". Essas teclas são usadas apenas quando há outros destinatários dados quer pelo uso de --recipient ou porpor uma id de usuário perguntada. Nenhuma verificação de confiança é realizado para estes IDs de usuário e mesmo chaves com deficiência pode ser usado.
+Mesma --hidden-recipient mas este é destinado ao uso no arquivo de opções e pode ser usado com o seu próprio user-id 
+como um oculto "encrypt-to-self". Essas teclas são usadas apenas quando há outros destinatários dados quer pelo uso de 
+--recipient ou porpor uma id de usuário perguntada. Nenhuma verificação de confiança é realizado para estes IDs de 
+usuário e mesmo chaves com deficiência pode ser usado.
 
 
 --no-encrypt-to
@@ -1141,8 +1341,14 @@ Desativa o uso de todos --encrypt-to e --hidden-encrypt-to keys.
 
 
 --group name=value1
-Quando usado a partir da linha de comando, pode ser necessário indicar o argumento para essa opção para previnir a shell de tratá-la como múltiplos argumentos.
-Define-se um determinado grupo, que é semelhante ao pseudônimos em programas de e-mail. A qualquer momento, o nome do grupo que é um receptor (-r ou - recipient), irá ser expandido com os valores especificados. Vários grupos com o mesmo nome são automaticamente mesclados em um único grupo. Os valores são IDs de chaves ou impressões digitais, mas qualquer descrição de chave é aceita. Note que um valor com espaços será tratados como dois valores diferentes. Note também que há apenas um nível de expansão --- você não pode fazer um grupo que aponta para outro grupo. Quando usado na linha de comando, pode ser necessário citar o argumento para esta opção para evitar que o shell trate-a como vários argumentos.
+Quando usado a partir da linha de comando, pode ser necessário indicar o argumento para essa opção para previnir a shell 
+de tratá-la como múltiplos argumentos.
+Define-se um determinado grupo, que é semelhante ao pseudônimos em programas de e-mail. A qualquer momento, o nome do 
+grupo que é um receptor (-r ou - recipient), irá ser expandido com os valores especificados. Vários grupos com o mesmo 
+nome são automaticamente mesclados em um único grupo. Os valores são IDs de chaves ou impressões digitais, mas qualquer 
+descrição de chave é aceita. Note que um valor com espaços será tratados como dois valores diferentes. Note também que 
+há apenas um nível de expansão --- você não pode fazer um grupo que aponta para outro grupo. Quando usado na linha de 
+comando, pode ser necessário citar o argumento para esta opção para evitar que o shell trate-a como vários argumentos.
 
 
 --ungroup name
@@ -1165,7 +1371,9 @@ Usa nome como a chave para a assinatura. Note que essa opção sobrescreve --def
 
 
                --try-all-secrets
-Não repare no ID de chave como está armazenado na mensagem, mas tente todas as chaves secretas para tentar encontrar a chave correta de decriptação. Essa opção força o comportamento como usado por destinatários anônimos (criado usando --throw-keyids) e pode vir convenientemente no caso em que uma mensagem criptografada contém uma ID de chave falso.
+Não repare no ID de chave como está armazenado na mensagem, mas tente todas as chaves secretas para tentar encontrar a 
+chave correta de decriptação. Essa opção força o comportamento como usado por destinatários anônimos (criado usando 
+--throw-keyids) e pode vir convenientemente no caso em que uma mensagem criptografada contém uma ID de chave falso.
 
 
    Entrada e Saída
@@ -1195,58 +1403,75 @@ Não repare no ID de chave como está armazenado na mensagem, mas tente todas as
 
 
                --max-output n
-Essa opção define um limite no número de bytes que irão ser gerados no processamento de um arquivo. Já que o OpenPGP suporta vários níveis de compressão, é possível que o texto simples de uma dada mensagem pode ser significativamente maior que a mensagem OpenPGP original. Enquanto o GnuPG funciona propriamente com tais mensagens, às vezes desejamos definir um tamanho de arquivo máximo que será gerado antes que o processamento seja forçado a parar pelos limites do SO . O padrão é 0, o que significa “sem limite”.
+Essa opção define um limite no número de bytes que irão ser gerados no processamento de um arquivo. Já que o OpenPGP 
+suporta vários níveis de compressão, é possível que o texto simples de uma dada mensagem pode ser significativamente 
+maior que a mensagem OpenPGP original. Enquanto o GnuPG funciona propriamente com tais mensagens, às vezes desejamos 
+definir um tamanho de arquivo máximo que será gerado antes que o processamento seja forçado a parar pelos limites do SO. 
+O padrão é 0, o que significa “sem limite”.
 
 
                --import-options parameters
-Um espaço ou vírgula delimita a string que fornece a opção para exportação de chaves. Opções podem ser precedidas com um ‘no-’ para dar o sentido oposto. As opções são:
+Um espaço ou vírgula delimita a string que fornece a opção para exportação de chaves. Opções podem ser precedidas com 
+um ‘no-’ para dar o sentido oposto. As opções são:
 
 
 
 
                       import-local-sigs
-Permite a importação de assinatura de chaves marcadas como “locais”. Isso não é geralmente útil, a não ser que um esquema de chaves compartilhadas esteja sendo usado. O padrão é não.
+Permite a importação de assinatura de chaves marcadas como “locais”. Isso não é geralmente útil, a não ser que um 
+esquema de chaves compartilhadas esteja sendo usado. O padrão é não.
 
 
 
 
                            repair-pks-subkey-bug
-Durante a importação, tentativas de reparar o dano causado pelo bug PKS keyserver (pre version 0.9.6) que deforma chaves com múltiplas sub-chaves. Note que isso não repara completamente o dano da chave, algum dado crucial da chave pode ser removida pelo keyserver, mas ao menos uma subchave é recuperada. O padrão é não para --import regulares e sim para keyserver --recv-keys.
+Durante a importação, tentativas de reparar o dano causado pelo bug PKS keyserver (pre version 0.9.6) que deforma chaves 
+com múltiplas sub-chaves. Note que isso não repara completamente o dano da chave, algum dado crucial da chave pode ser 
+removida pelo keyserver, mas ao menos uma subchave é recuperada. O padrão é não para --import regulares e sim para 
+keyserver --recv-keys.
 
 
 
 
                     merge-only
-Durante a importação, permite a atualização de chaves existentes, mais não permite a importação de novas chaves. O padrão é não.
+Durante a importação, permite a atualização de chaves existentes, mais não permite a importação de novas chaves. O 
+padrão é não.
                
 
 
                       import-clean
-Após a importação, compacta (remove todas as assinaturas, exceto a auto assinatura) todas as IDs de usuário da nova chave que não são usáveis.
-E então, remove todas as assinaturas da nova chave que não são usáveis. Isso inclui assinaturas que foram emitidas pelas chaves que não estão presentes no chaveiro. Essa opção é a mesma quando rodando o comando --edit-key “limpo” depois da importação. O padrão é não.
+Após a importação, compacta (remove todas as assinaturas, exceto a auto assinatura) todas as IDs de usuário da nova 
+chave que não são usáveis.
+E então, remove todas as assinaturas da nova chave que não são usáveis. Isso inclui assinaturas que foram emitidas 
+pelas chaves que não estão presentes no chaveiro. Essa opção é a mesma quando rodando o comando --edit-key “limpo” 
+depois da importação. O padrão é não.
                      
 
 
                       import-minimal
-Importa a menor chave possível. Isso remove todas as assinaturas, exceto a mais recente auto-assinatura em cada ID de usuário. Essa opção é a mesma do comando ---edit-key “minimize” após a importação. O padrão é não.
+Importa a menor chave possível. Isso remove todas as assinaturas, exceto a mais recente auto-assinatura em cada ID de 
+usuário. Essa opção é a mesma do comando ---edit-key “minimize” após a importação. O padrão é não.
 
 
 
 
        --export-options parameters
-Um espaço ou vírgula delimita a string que fornece opções para exportação de chaves. Opções podem ser iniciadas com um ‘no-’ para dar o significado oposto. As opções são:
+Um espaço ou vírgula delimita a string que fornece opções para exportação de chaves. Opções podem ser iniciadas com um 
+‘no-’ para dar o significado oposto. As opções são:
 
 
 
 
                     export-local-sigs
-Permite a exportação de assinatura de chaves marcadas como “locais”. Isso não é geralmente útil, a não ser que um esquema de chaves compartilhadas esteja sendo usado. O padrão é não.
+Permite a exportação de assinatura de chaves marcadas como “locais”. Isso não é geralmente útil, a não ser que um 
+esquema de chaves compartilhadas esteja sendo usado. O padrão é não.
 
 
 
 
 export-attributes
-Inclui o atributo IDs de usuário (photo IDs) durante a exportação. Isso é usuário para exportar chaves que estão sendo usadas por um programa OpenPGP que não aceita o atributo IDs de usuário. O padrão é sim.
+Inclui o atributo IDs de usuário (photo IDs) durante a exportação. Isso é usuário para exportar chaves que estão sendo 
+usadas por um programa OpenPGP que não aceita o atributo IDs de usuário. O padrão é sim.
 
 
 
@@ -1258,29 +1483,40 @@ Inclui informação designada revogada que estava marcada como “sensitiva”. 
 
 
                       export-reset-subkey-passwd
-Quando usar o comando --export-secret-subkeys, essa opção redefine as senhas para todas as sub-chaves exportadas para vazio. Isso é útil quando a sub-chave exportada é usada em máquinas autônomas onde a senha não precisa necessariamente fazer sentido. O padrão é não.
+Quando usar o comando --export-secret-subkeys, essa opção redefine as senhas para todas as sub-chaves exportadas para 
+vazio. Isso é útil quando a sub-chave exportada é usada em máquinas autônomas onde a senha não precisa necessariamente 
+fazer sentido. O padrão é não.
 
 
 
 
 export-clean
-Compacta (remove todas as assinaturas) IDs de usuário nas chaves sendo exportadas se as IDs não são usáveis. Também não exporta assinaturas que não são usáveis. Isso inclui assiinaturas que foram geradas pelas chaves que não estão presentes no chaveiro. Essa opção é a mesma do comando --edit-key “limpo” antes da exportação, exceto que a cópia local da chave não é modificada. O padrão é não.
+Compacta (remove todas as assinaturas) IDs de usuário nas chaves sendo exportadas se as IDs não são usáveis. Também não 
+exporta assinaturas que não são usáveis. Isso inclui assiinaturas que foram geradas pelas chaves que não estão presentes 
+no chaveiro. Essa opção é a mesma do comando --edit-key “limpo” antes da exportação, exceto que a cópia local da chave 
+não é modificada. O padrão é não.
 
 
                     export-minimal
-Exporta a menor chave possível. Isso remove todas as assinaturas, exceto a mais recente auto-assinatura em cada ID de usuário. Essa opção é a mesma do comando ---edit-key “minimize” após a importação. Exceto que a cópia local da chave não é modificada.  O padrão é não.
+Exporta a menor chave possível. Isso remove todas as assinaturas, exceto a mais recente auto-assinatura em cada ID de 
+usuário. Essa opção é a mesma do comando ---edit-key “minimize” após a importação. Exceto que a cópia local da chave não 
+é modificada.  O padrão é não.
 
 
 
 
 --with-colons
-Imprime listagens de chave delimitadas por dois pontos. Note que a saída será codificada em UTF-8 sem levar em conta qualquer configuração --display-charset. Esse formato é útil quando o GnuPG é chamado de scripts e outros programas pois é facilmente analisado pela máquina. Os detalhes desse formato estão documentados no arquivo ‘doc/DETAILS’, que está incluido na distribuição de código do GnuPG.
+Imprime listagens de chave delimitadas por dois pontos. Note que a saída será codificada em UTF-8 sem levar em conta 
+qualquer configuração --display-charset. Esse formato é útil quando o GnuPG é chamado de scripts e outros programas pois 
+é facilmente analisado pela máquina. Os detalhes desse formato estão documentados no arquivo ‘doc/DETAILS’, que está 
+incluido na distribuição de código do GnuPG.
 
 
 
 
                --fixed-list-mode
-Não misture ID de usuário primário e chave primária no modo de listagem --with-colon e imprima todos os timestamps como segundos desde 01-01-1970.
+Não misture ID de usuário primário e chave primária no modo de listagem --with-colon e imprima todos os timestamps como 
+segundos desde 01-01-1970.
 
 
 
@@ -1300,11 +1536,17 @@ O mesmo que o comando --fingerprint, mudando apenas o formato de saída e pode s
 
 
                --no-textmode
-Trata arquivos de entrada como texto e os armazena na forma de texto canônico do OpenPGP com o padrão de quebra de linha “CRLF”. Isso também define os flags necessários para informar o recipiente que os dados criptografados ou assinados são texto e podem precisar de quebras de linha convertidas para o padrão que o sistema usa. Essa opção é útil para se comunicar entre duas plataformas que utilizam diferentes convenções de quebra de linha (sistemas UNIX para Mac, Mac para Windows, etc). --no-textmode desabilita essa opção e é o padrão.
+Trata arquivos de entrada como texto e os armazena na forma de texto canônico do OpenPGP com o padrão de quebra de linha 
+“CRLF”. Isso também define os flags necessários para informar o recipiente que os dados criptografados ou assinados são 
+texto e podem precisar de quebras de linha convertidas para o padrão que o sistema usa. Essa opção é útil para se 
+comunicar entre duas plataformas que utilizam diferentes convenções de quebra de linha (sistemas UNIX para Mac, Mac para 
+Windows, etc). --no-textmode desabilita essa opção e é o padrão.
               
 
 
-If  -t  (mas não --textmode) é usando junto com armoring e assinatura, isso habilita mensagens clearsigned. Esse “tapa-buracos” é necessário para a compatibilidade entre versões de linhas de comando do PGP; normalmente você iria usar --sign ou --clearsign para selecionar o tipo de assinatura.
+If  -t  (mas não --textmode) é usando junto com armoring e assinatura, isso habilita mensagens clearsigned. Esse 
+“tapa-buracos” é necessário para a compatibilidade entre versões de linhas de comando do PGP; normalmente você iria usar 
+--sign ou --clearsign para selecionar o tipo de assinatura.
 
 
 
@@ -1315,8 +1557,11 @@ If  -t  (mas não --textmode) é usando junto com armoring e assinatura, isso ha
 
 
                --no-force-v3-sigs
-OpenPGP afirma que uma implementação deveria gerar assinaturas v4, mas as versões PGP de 5 a 7 apenas reconhecem assinaturas v4 nas chaves materiais .
-Essa opção força assinaturas v3 para assinaturas em dados. Note que essa opção implica em  --ask-sig-expire, --sig-policy-url, --sig-notation e --sig-keyserver-url, uma vez que essas características não podem ser usadas com assinaturas v3. --no-force-v3-sigs desabilita essa opção.
+OpenPGP afirma que uma implementação deveria gerar assinaturas v4, mas as versões PGP de 5 a 7 apenas reconhecem 
+assinaturas v4 nas chaves materiais .
+Essa opção força assinaturas v3 para assinaturas em dados. Note que essa opção implica em  --ask-sig-expire, 
+--sig-policy-url, --sig-notation e --sig-keyserver-url, uma vez que essas características não podem ser usadas com 
+assinaturas v3. --no-force-v3-sigs desabilita essa opção.
 
 
 
@@ -1325,41 +1570,57 @@ Essa opção força assinaturas v3 para assinaturas em dados. Note que essa opç
 
 
                --no-force-v4-certs
-Sempre use assinaturas de chave v4 até mesmo com chaves v3. Essa opção também muda o algoritmo de hash padrão de chave RSA v3 de MD5 para SHA-1. --no- force-v4-certs desabilita essa opção.
+Sempre use assinaturas de chave v4 até mesmo com chaves v3. Essa opção também muda o algoritmo de hash padrão de chave 
+RSA v3 de MD5 para SHA-1. --no- force-v4-certs desabilita essa opção.
 
 
 
 
                --force-mdc
-Força o uso de criptografia com um código de detecção de modificações. Isso é sempre usado em processadores novos (aqueles com tamanho de bloco maior que 64 bits), ou se todas as chaves do destinatário indica suporte ao MDC em seus flags de características.
+Força o uso de criptografia com um código de detecção de modificações. Isso é sempre usado em processadores novos 
+(aqueles com tamanho de bloco maior que 64 bits), ou se todas as chaves do destinatário indica suporte ao MDC em seus 
+flags de características.
 
 
 
 
                --disable-mdc
-Desabilita o uso do código de detecção de modificação. Not que usando essa opção, as mensagens criptografadas podem se tornar vulneráveis a um ataque de modificação de mensagem.
+Desabilita o uso do código de detecção de modificação. Not que usando essa opção, as mensagens criptografadas podem se 
+tornar vulneráveis a um ataque de modificação de mensagem.
 
 
                --personal-cipher-preferences string
-Define a lista de preferências de cifras pessoais para string. Use gpg --version para ter acesso à lista de algoritmos disponíveis e use nenhum para não definir preferências. Isso permite ao usuário sobreescrever o algoritmo escolhido pelas preferências de chaves destinatários com segurança, como GPG irá apenas selecionar um algoritmo que será usado por todos os destinatários. A cifra mais bem classificada nessa lista também será usada no comando --symmetric encryption.
+Define a lista de preferências de cifras pessoais para string. Use gpg --version para ter acesso à lista de algoritmos 
+disponíveis e use nenhum para não definir preferências. Isso permite ao usuário sobreescrever o algoritmo escolhido 
+pelas preferências de chaves destinatários com segurança, como GPG irá apenas selecionar um algoritmo que será usado por 
+todos os destinatários. A cifra mais bem classificada nessa lista também será usada no comando --symmetric encryption.
 
 
 
 
                --personal-digest-preferences string
-Define a lista de preferências de síntese pessoais para string. Use gpg --version para ter acesso a uma lista de algoritmo disponíveis e use nenhum para não definir preferências. Isso permite ao usuário sobreescrever o algoritmo escolhido pelas preferências de chaves destinatários com segurança, como GPG irá apenas selecionar um algoritmo que será usado por todos os destinatários. O algoritmo de sintese mais bem classificado nessa lista também será usado com assinaturas sem criptografia (e.g. --clearsign ou --sign). O valor padrão é SHA-1.
+Define a lista de preferências de síntese pessoais para string. Use gpg --version para ter acesso a uma lista de 
+algoritmo disponíveis e use nenhum para não definir preferências. Isso permite ao usuário sobreescrever o algoritmo 
+escolhido pelas preferências de chaves destinatários com segurança, como GPG irá apenas selecionar um algoritmo que será 
+usado por todos os destinatários. O algoritmo de sintese mais bem classificado nessa lista também será usado com 
+assinaturas sem criptografia (e.g. --clearsign ou --sign). O valor padrão é SHA-1.
 
 
 
 
                --personal-compress-preferences string
-Define a lista de preferências de compressão pessoal para string. Use gpg --version para ter acesso a uma lista de algoritmo disponíveis e use nenhum para não definir preferências.  Isso permite ao usuário sobreescrever o algoritmo escolhido pelas preferências de chaves destinatários com segurança, como GPG irá apenas selecionar um algoritmo que será usado por todos os destinatários. O algoritmo de sintese mais bem classificado nessa lista também será usado quando não há assinaturas de destinatários para se considerar (ex. --symmetric).
+Define a lista de preferências de compressão pessoal para string. Use gpg --version para ter acesso a uma lista de 
+algoritmo disponíveis e use nenhum para não definir preferências.  Isso permite ao usuário sobreescrever o algoritmo 
+escolhido pelas preferências de chaves destinatários com segurança, como GPG irá apenas selecionar um algoritmo que 
+será usado por todos os destinatários. O algoritmo de sintese mais bem classificado nessa lista também será usado quando 
+não há assinaturas de destinatários para se considerar (ex. --symmetric).
 
 
 
 
                --s2k-cipher-algo name
-Usa o nome como o algoritmo de criptografia usado para proteger as chaves secretas. A cifra padrão é CAST5. Esta codificação é usada também para convencional criptografia se --personal-cipher-preferences e --cipher-algo não é dado.
+Usa o nome como o algoritmo de criptografia usado para proteger as chaves secretas. A cifra padrão é CAST5. Esta 
+codificação é usada também para convencional criptografia se --personal-cipher-preferences e --cipher-algo não é dado.
 
 
 
@@ -1373,13 +1634,17 @@ Usa nome como o algoritmo digest usado para deformar as senhas. O algoritmo padr
 
 
                --s2k-mode n
-Seleciona como senhas são deformadas. Se n é 0 uma senha plana (que não é recomendada) será usada, um 1 adiciona um “sal” à senha e um 3 (o padrão) itera o processo inteiro um grande número de vezes (veja --s2k-count). A não ser que --rfc1991 seja usado, esse modo é também usado para criptografia convencional.
+Seleciona como senhas são deformadas. Se n é 0 uma senha plana (que não é recomendada) será usada, um 1 adiciona um 
+“sal” à senha e um 3 (o padrão) itera o processo inteiro um grande número de vezes (veja --s2k-count). A não ser que 
+--rfc1991 seja usado, esse modo é também usado para criptografia convencional.
 
 
 
 
                --s2k-count n
-Especifica quantas vezes a deformação da senha é repetida. Esse  valor pode variar entre 1024 e 65011712 inclusive e o padrão é 65536. Note que nem todos os valores no intervalo 1024-65011712 são legais e se um valor ilegal é selecionado, o GnuPG irá arredondar para o valor maior legal mais próximo. Essa opção tem sentido apenas se --s2k-mode é igual a 3.
+Especifica quantas vezes a deformação da senha é repetida. Esse  valor pode variar entre 1024 e 65011712 inclusive e o 
+padrão é 65536. Note que nem todos os valores no intervalo 1024-65011712 são legais e se um valor ilegal é selecionado, 
+o GnuPG irá arredondar para o valor maior legal mais próximo. Essa opção tem sentido apenas se --s2k-mode é igual a 3.
 
 
 
@@ -1391,23 +1656,31 @@ Especifica quantas vezes a deformação da senha é repetida. Esse  valor pode v
    Opções de compatibilidade
 
 
-Essas opções controlar com o que o GnuPG é compatível. Apenas uma dessas opções podem estar ativas por vez. Note que a configuração padrão disso é quase sempre a correta. Veja a seção INTEROPERABILIDADE COM OUTRO PROGRAMA OPENPGP abaixo antes de usar uma dessas opções.
+Essas opções controlar com o que o GnuPG é compatível. Apenas uma dessas opções podem estar ativas por vez. Note que a 
+configuração padrão disso é quase sempre a correta. Veja a seção INTEROPERABILIDADE COM OUTRO PROGRAMA OPENPGP abaixo 
+antes de usar uma dessas opções.
 
 
 
 
                --gnupg
-Usa o comportamento padrão do GnuPG. Isso é essencialmente o comportamento do OpenPGP (veja --openpgp), mas com algumas soluções alternativas para problemas de compatibilidade comuns em diferentes versões do PGP. Essa é a opção padrão, então não é geralmente necessária, mas isso pode ser útil para sobrescrever uma opção de conformidade diferente no arquivo pgp.conf.
+Usa o comportamento padrão do GnuPG. Isso é essencialmente o comportamento do OpenPGP (veja --openpgp), mas com algumas 
+soluções alternativas para problemas de compatibilidade comuns em diferentes versões do PGP. Essa é a opção padrão, 
+então não é geralmente necessária, mas isso pode ser útil para sobrescrever uma opção de conformidade diferente no 
+arquivo pgp.conf.
 
 
 
 
                --openpgp
-Redefine todas as opções de pacote, cifra e digest para o comportamento OpenPGP estrito. Use essa opção para redefinir todas as opções anteriores, como --s2k-*, --cipher-algo, --digest-algo e --compress-algo para valores compatíveis do OpenPGP. Todas as soluções PGP alternativas são desabilitadas.
+Redefine todas as opções de pacote, cifra e digest para o comportamento OpenPGP estrito. Use essa opção para redefinir 
+todas as opções anteriores, como --s2k-*, --cipher-algo, --digest-algo e --compress-algo para valores compatíveis do 
+OpenPGP. Todas as soluções PGP alternativas são desabilitadas.
 
 
                --rfc4880
-Redefine todas as opções de pacote, cifra e digest para o comportamento estrito do RFC-4880. Note que essa opção é correntemente a mesma coisa que a opção --openpgp.
+Redefine todas as opções de pacote, cifra e digest para o comportamento estrito do RFC-4880. Note que essa opção é 
+correntemente a mesma coisa que a opção --openpgp.
 
 
 
@@ -1421,13 +1694,19 @@ Redefine todas as opções de pacote, cifra e digest para o comportamento estrit
 
 
                --pgp2
-Define todas as opções para ser o mais compatível possível com PGP 2.x e alerta se uma ação tomada (e.g. criptografia para uma chave que não seja RSA) que irá criar uma mensagem que o PGP 2.x não será capaz de lidar. Note que ‘PGP 2.x’ aqui significa ‘MIT PGP 2.6.2’. Há outras versões do PGP 2.x disponíveis, mas a liberada pelo MIT é uma boa linha de base comum.
-Essa opção implica --rfc1991 --disable-mdc --no-force-v4-certs --escape-from-lines --force-v3-sigs --cipher-algo  IDEA  --digest-algo  MD5
+Define todas as opções para ser o mais compatível possível com PGP 2.x e alerta se uma ação tomada (e.g. criptografia 
+para uma chave que não seja RSA) que irá criar uma mensagem que o PGP 2.x não será capaz de lidar. Note que ‘PGP 2.x’ 
+aqui significa ‘MIT PGP 2.6.2’. Há outras versões do PGP 2.x disponíveis, mas a liberada pelo MIT é uma boa linha de base comum.
+Essa opção implica --rfc1991 --disable-mdc --no-force-v4-certs --escape-from-lines --force-v3-sigs --cipher-algo  IDEA  
+--digest-algo  MD5
               --compress-algo ZIP. E também desabilita --textmode enquando criptografando.
 
 
                --pgp6
-Define todas as opções para serem o mais compatíveis possível com o PGP6. Isso te restringe às cifras IDEA (se o plugin IDEA estiver instalado), 3DES e CASAT5, os algoritmos de hash MD5, SHA1 e RIPEMD160, e os algoritmos de compressão none e ZIP. Também desabilita --throw-keyids e fazendo assinaturas com sub-chaves de assinatura, como PGP 6 não entende assinaturas feitas por sub-chaves de assinatura.
+Define todas as opções para serem o mais compatíveis possível com o PGP6. Isso te restringe às cifras IDEA (se o plugin 
+IDEA estiver instalado), 3DES e CASAT5, os algoritmos de hash MD5, SHA1 e RIPEMD160, e os algoritmos de compressão none 
+e ZIP. Também desabilita --throw-keyids e fazendo assinaturas com sub-chaves de assinatura, como PGP 6 não entende 
+assinaturas feitas por sub-chaves de assinatura.
 
 
               Essa opção implica --disable-mdc --escape-from-lines --force-v3-sigs.
@@ -1436,11 +1715,14 @@ Define todas as opções para serem o mais compatíveis possível com o PGP6. Is
 
 
                --pgp7
-Define todas as opções para serem o mais compatíveis possível com o PGP 7. É idêntico ao --pgp6, exceto que MDCs não estão desabilitados e a lista de cifras permitidas é expandida para AES128, AES192, AES256 e TWOFISH.
+Define todas as opções para serem o mais compatíveis possível com o PGP 7. É idêntico ao --pgp6, exceto que MDCs não 
+estão desabilitados e a lista de cifras permitidas é expandida para AES128, AES192, AES256 e TWOFISH.
 
 
                --pgp8
-Define todas as opções para serem o mais compatíveis possível com o PGP 8. PGP 8 é muito mais próximo do padrão OpenPGP do que as versões anteriores do PGP, então tudo o que é feito é desabilitar  --throw-keyids e habilitar --escape-from-lines. Todos os algoritmos são habilitados, exceto SHA224, SHA384 e SHA512 digests.
+Define todas as opções para serem o mais compatíveis possível com o PGP 8. PGP 8 é muito mais próximo do padrão OpenPGP 
+do que as versões anteriores do PGP, então tudo o que é feito é desabilitar  --throw-keyids e habilitar 
+--escape-from-lines. Todos os algoritmos são habilitados, exceto SHA224, SHA384 e SHA512 digests.
 
 
                -n
@@ -1451,7 +1733,9 @@ Define todas as opções para serem o mais compatíveis possível com o PGP 8. P
 
 
                --list-only
-Muda o comportamento de alguns comandos. E como o --dry-run, mas diferente em alguns casos. A semântica desse comando pode ser extendida no futuro. Atualmente ele só ignora a passagem de criptografia real e, portanto, permite uma listagem rápida das chaves de criptografia.
+Muda o comportamento de alguns comandos. E como o --dry-run, mas diferente em alguns casos. A semântica desse comando 
+pode ser extendida no futuro. Atualmente ele só ignora a passagem de criptografia real e, portanto, permite uma listagem 
+rápida das chaves de criptografia.
 
 
 
@@ -1485,11 +1769,13 @@ Habilita a saída de debug do driver CCID para smartcards. Note que essa opção
 
 
                --enable-progress-filter
-Habilita certas saídas de status de progresso. Essa opção permite a interfaces mostrarem um indicador de progresso enquanto pgp está processando arquivos grandes. Há uma leve diminuição de performance utilizando isso.
+Habilita certas saídas de status de progresso. Essa opção permite a interfaces mostrarem um indicador de progresso 
+enquanto pgp está processando arquivos grandes. Há uma leve diminuição de performance utilizando isso.
 
 
                --status-fd n
-Escreve strings de status especiais no descritor de arquivo n. Veja o arquivo DETAILS na documentação para uma listagem delas.
+Escreve strings de status especiais no descritor de arquivo n. Veja o arquivo DETAILS na documentação para uma listagem 
+delas.
 
 
                --status-file file
@@ -1508,13 +1794,15 @@ O mesmo que --status-fd, exceto que os dados de estado são escritos no arquivo 
 
 
        --logger-file file
-O mesmo que --logger-fd, exceto que os dados de estado são escritos no arquivo file. Note que --log-file é implementado apenas para o GnuPG-2.
+O mesmo que --logger-fd, exceto que os dados de estado são escritos no arquivo file. Note que --log-file é implementado 
+apenas para o GnuPG-2.
 
 
 
 
        --attribute-fd n
-Escreve o atributo sub-pacotes no descritor de arquivo n. Isso é mais útil para usar com --status-fd, desde que mensagens de estado são necessárias para separar os vários sub-pacotes do fluxo entregue ao descritor de arquivo.
+Escreve o atributo sub-pacotes no descritor de arquivo n. Isso é mais útil para usar com --status-fd, desde que 
+mensagens de estado são necessárias para separar os vários sub-pacotes do fluxo entregue ao descritor de arquivo.
 
 
 
@@ -1527,7 +1815,11 @@ Escreve o atributo sub-pacotes no descritor de arquivo n. Isso é mais útil par
 
 
        --no-comments
-Use string como uma string de comentário em assinaturas de texto limpo e mensagens ou chaves ASCII armored (veja --armor). O comportamento padrão é não usar uma string de comentário. --coment pode ser repetido várias vezes para se ter várias strings de comentários. --no-comments remove todos os comentários. É uma boa ideia manter o tamanho de um único comentário menor que 60 caracteres para evitar problemas com programas de email envolvendo tais linhas. Note que linhas comentadas, como todas as linhas de cabeçalho, não são protegidas pela assinatura.
+Use string como uma string de comentário em assinaturas de texto limpo e mensagens ou chaves ASCII armored (veja --armor). 
+O comportamento padrão é não usar uma string de comentário. --coment pode ser repetido várias vezes para se ter várias 
+strings de comentários. --no-comments remove todos os comentários. É uma boa ideia manter o tamanho de um único 
+comentário menor que 60 caracteres para evitar problemas com programas de email envolvendo tais linhas. Note que linhas 
+comentadas, como todas as linhas de cabeçalho, não são protegidas pela assinatura.
 
 
        --emit-version
