@@ -1838,8 +1838,15 @@ Força a inclusão de uma versão string de saída ASCII blindado. --no-emit-ver
 
 
                -N, --set-notation name=value
-Coloca o nome par de valor na assinatura como dado de notação. name tem que consistir de apenas caracteres imprimíveis ou espaços e tem que conter o caracter ‘@’ na forma keyname@domain.example.com (substituindo keyname e o nome de domínio). Isso ajuda a prevenir que a notação IETF de espaço de nomes reservados seja poluída. O --expert flag sobrescreve a verificação ‘@’. value precisa ser uma string imprimível; isso será codificado em UFT8, para que você possa chegar que o seu --display-charset está definido corretamente. Se você prefixar o seu nome com um ponto de exclamação (!), o dado de notação receberá um flag crítico (rfc2440:5.2.3.15). --sig-notation define uma notação para assinatura de dados. --cert-notation define uma notação para assinatura de chaves (certificações). --set-notation define ambos.
-Existem códigos especiais que podem ser usados em notações de nomes. “%d” irá ser expandido na ID de chave da chave sendo assinada, “%K” na ID de chave longa da chave sendo assinada, “%f” na impressão digital (fingerprint) da chave sendo assinada, “%s” na ID de chave da chave que está fazendo a assinatura, “%S” na ID de chave longa da chave que está fazendo a assinatura, “%g” na impressão digital da chave que está fazendo a assinatura (que pode ser uma sub-chave), “%p” na impressão digital da chave primária da chave que está fazendo a assinatura, “%c” na conta de assinatura do smartcard OpenPGP, e “%%” resulta numa simples “%”. %k, %K e %f são apenas significantes quando se está fazendo a assinatura de chaves (certificação) e %c é apenas significante quando se está utilizando o smartcard OpenPGP.
+Coloca o nome par de valor na assinatura como dado de notação. name tem que consistir de apenas caracteres imprimíveis 
+ou espaços e tem que conter o caracter ‘@’ na forma keyname@domain.example.com (substituindo keyname e o nome de domínio). Isso ajuda a prevenir que a notação IETF de espaço de nomes reservados seja poluída. O --expert flag sobrescreve a verificação ‘@’. value precisa ser uma string imprimível; isso será codificado em UFT8, para que você possa chegar que o seu --display-charset está definido corretamente. Se você prefixar o seu nome com um ponto de exclamação (!), o dado de notação receberá um flag crítico (rfc2440:5.2.3.15). --sig-notation define uma notação para assinatura de dados. --cert-notation define uma notação para assinatura de chaves (certificações). --set-notation define ambos.
+Existem códigos especiais que podem ser usados em notações de nomes. “%d” irá ser expandido na ID de chave da chave 
+sendo assinada, “%K” na ID de chave longa da chave sendo assinada, “%f” na impressão digital (fingerprint) da chave 
+sendo assinada, “%s” na ID de chave da chave que está fazendo a assinatura, “%S” na ID de chave longa da chave que está 
+fazendo a assinatura, “%g” na impressão digital da chave que está fazendo a assinatura (que pode ser uma sub-chave), 
+“%p” na impressão digital da chave primária da chave que está fazendo a assinatura, “%c” na conta de assinatura do 
+smartcard OpenPGP, e “%%” resulta numa simples “%”. %k, %K e %f são apenas significantes quando se está fazendo a 
+assinatura de chaves (certificação) e %c é apenas significante quando se está utilizando o smartcard OpenPGP.
 
 
 
@@ -1851,12 +1858,15 @@ Existem códigos especiais que podem ser usados em notações de nomes. “%d”
 
 
                --set-policy-url string
-Usa string como uma Política de URL para assinaturas (rfc2440:5.2.3.19). Se você prefixar isso com um ponto de exclamação (!), o pacote de política de URL receberá um flag crítico. --sig-policy-url define a política de url para assinaturas de dados. --cert-policy-url define o pacote de política de URL para as assinaturas de chaves (certificações). --set-policy-url define ambos.
-        O mesmo %-expandos usado para dado de notação está disponível também.
+Usa string como uma Política de URL para assinaturas (rfc2440:5.2.3.19). Se você prefixar isso com um ponto de 
+exclamação (!), o pacote de política de URL receberá um flag crítico. --sig-policy-url define a política de url para 
+assinaturas de dados. --cert-policy-url define o pacote de política de URL para as assinaturas de chaves (certificações). 
+--set-policy-url define ambos. O mesmo %-expandos usado para dado de notação está disponível também.
 
 
                --sig-keyserver-url string
-Use string como uma URL keyserver preferencial para assinatura de dados. Se você prefixá-la com um ponto de exclamação (!), o pacote de URL keyserver receberá um flag crítico.
+Use string como uma URL keyserver preferencial para assinatura de dados. Se você prefixá-la com um ponto de exclamação 
+(!), o pacote de URL keyserver receberá um flag crítico.
 
 
 O mesmo %-expandos usado para dado de notação está disponível também.
@@ -1865,7 +1875,8 @@ O mesmo %-expandos usado para dado de notação está disponível também.
 
 
                --set-filename string
-Use string como o nome de arquivo que será armazenado dentro das mensagens. Isso sobrescreve o padrão, que é o nome real do arquivo sendo criptografado.
+Use string como o nome de arquivo que será armazenado dentro das mensagens. Isso sobrescreve o padrão, que é o nome real 
+do arquivo sendo criptografado.
 
 
 
@@ -1874,52 +1885,74 @@ Use string como o nome de arquivo que será armazenado dentro das mensagens. Iss
 
 
                --no-for-your-eyes-only
-Define o flag “para os seus olhos apenas” na mensagem. Isso faz o GnuPG recusar a salvar o arquivo, a não ser que a opção --output seja dada, e o PGP a usar uma “visão segura” com uma afirmada fonte resistente a tempestades para mostrar a mensagem. Essa opção sobrescreve --set-filename. --no-for-you-eyes-only desabilita essa opção.
+Define o flag “para os seus olhos apenas” na mensagem. Isso faz o GnuPG recusar a salvar o arquivo, a não ser que a 
+opção --output seja dada, e o PGP a usar uma “visão segura” com uma afirmada fonte resistente a tempestades para mostrar 
+a mensagem. Essa opção sobrescreve --set-filename. --no-for-you-eyes-only desabilita essa opção.
   
                --use-embedded-filename
 
 
                --no-use-embedded-filename
-Tenta criar um arquivo com o nome incorporado nos dados. Isso pode ser uma opção perigosa, pois permite sobrescrever arquivo. O padrão é não.
+Tenta criar um arquivo com o nome incorporado nos dados. Isso pode ser uma opção perigosa, pois permite sobrescrever 
+arquivo. O padrão é não.
 
 
 
 
                --cipher-algo name
-Usa nome como um algoritmo de criptografia. Rodando o programa com o comando --version é fornecida uma lista de algoritmo suportados. Se não for usado, o algoritmo de criptografia é selecionado das preferências armazenadas com a chave. Geralmente, você não quer usar essa opção, já que isso viola o padrão OpenPGP. --personal-cipher-preferences é a maneira segura de se fazer a mesma coisa.
+Usa nome como um algoritmo de criptografia. Rodando o programa com o comando --version é fornecida uma lista de 
+algoritmo suportados. Se não for usado, o algoritmo de criptografia é selecionado das preferências armazenadas com a 
+chave. Geralmente, você não quer usar essa opção, já que isso viola o padrão OpenPGP. --personal-cipher-preferences é a 
+maneira segura de se fazer a mesma coisa.
 
 
 
 
                --digest-algo name
-Usa nome como o algoritmo de digestão de mensagem. Rodando o programa com o comando --version é fornecida uma lista com os algoritmos suportados. Geralmente, você não quer usar essa opção, já que ela viola o padrão OpenPGP. --personal-digest-preferences é a maneira segura de se fazer o mesmo.
+Usa nome como o algoritmo de digestão de mensagem. Rodando o programa com o comando --version é fornecida uma lista com 
+os algoritmos suportados. Geralmente, você não quer usar essa opção, já que ela viola o padrão OpenPGP. 
+--personal-digest-preferences é a maneira segura de se fazer o mesmo.
 
 
 
 
                --compress-algo name
-Usa o algoritmo de compressão name. “zlib” é a compressão RFC-1950 ZLIB. “zip” é a compressão RFC-1951 ZIP que é usada pelo PGP. “bzip2” é um esquema de compressão mais moderno que comprime algumas coisas melhor que zip ou zlib, mas com o custo de mais memória usada durante a compressão e a descompressão. “uncompressed” or “none” desabilita a compressão. Se essa opção não é usada, o comportamento padrão é examinar as preferências do destinatário da chave para ver quais algoritmos o destinatário suporta. Isso tudo mais falhar, ZIP é usado para a máxima compatibilidade.
+Usa o algoritmo de compressão name. “zlib” é a compressão RFC-1950 ZLIB. “zip” é a compressão RFC-1951 ZIP que é usada 
+pelo PGP. “bzip2” é um esquema de compressão mais moderno que comprime algumas coisas melhor que zip ou zlib, mas com o 
+custo de mais memória usada durante a compressão e a descompressão. “uncompressed” or “none” desabilita a compressão. 
+Se essa opção não é usada, o comportamento padrão é examinar as preferências do destinatário da chave para ver quais 
+algoritmos o destinatário suporta. Isso tudo mais falhar, ZIP é usado para a máxima compatibilidade.
 
 
-ZLIB pode fornecer resultados de compressão melhores que ZIP, como a janela de compressão é limitada a 8k. BZIP2 pode fornecer resultados de compressão ainda melhores que isso, mas uma quantidade significativa de memória será usada durante a compressão e descompressão. Isso pode ser significamente em situações de pouca memória. Note, no entanto, que PGP (todas as versões) apenas suporta compressão ZIP. Usar qualquer algoritmo que não seja ZIP ou “none” fará que a mensagem seja indecifrável com PGP. Geralmente, você não quer usar essa opção, já que ela viola o padrão OpenPGP. --personal-compress-preferences é a maneira segura de se fazer a mesma coisa.
+ZLIB pode fornecer resultados de compressão melhores que ZIP, como a janela de compressão é limitada a 8k. BZIP2 pode 
+fornecer resultados de compressão ainda melhores que isso, mas uma quantidade significativa de memória será usada 
+durante a compressão e descompressão. Isso pode ser significamente em situações de pouca memória. Note, no entanto, que 
+PGP (todas as versões) apenas suporta compressão ZIP. Usar qualquer algoritmo que não seja ZIP ou “none” fará que a 
+mensagem seja indecifrável com PGP. Geralmente, você não quer usar essa opção, já que ela viola o padrão OpenPGP.
+--personal-compress-preferences é a maneira segura de se fazer a mesma coisa.
 
 
 
 
                --cert-digest-algo name
-Usa nome como o algoritmo de criptografia de mensagem usado quando assinando uma chave. Rodando o programa com o comando --version é fornecida uma lista dos algoritmos suportados. Esteja atento que se você escolher um algoritmo que o GnuPG suporta e outro que as implementações OpenPGP não suportam, alguns usuários não estarão aptos a usar as assinaturas de chaves que você fizer, ou muito possivelmente toda a sua chave.
+Usa nome como o algoritmo de criptografia de mensagem usado quando assinando uma chave. Rodando o programa com o comando 
+--version é fornecida uma lista dos algoritmos suportados. Esteja atento que se você escolher um algoritmo que o GnuPG 
+suporta e outro que as implementações OpenPGP não suportam, alguns usuários não estarão aptos a usar as assinaturas de 
+chaves que você fizer, ou muito possivelmente toda a sua chave.
 
 
 
 
                --disable-cipher-algo name
-Nunca permita o uso de name como o algoritmo de criptografia. O nome dado não será checado, então um algoritmo carregado posteriormente ainda estará desabilitado.
+Nunca permita o uso de name como o algoritmo de criptografia. O nome dado não será checado, então um algoritmo carregado 
+posteriormente ainda estará desabilitado.
 
 
 
 
                --disable-pubkey-algo name
-Nunca permite o uso de name como o algoritmo de chave pública. O nome dado não será checado, então um algoritmo carregado posteriormente ainda estará desabilitado.
+Nunca permite o uso de name como o algoritmo de chave pública. O nome dado não será checado, então um algoritmo 
+carregado posteriormente ainda estará desabilitado.
 
 
 
@@ -1928,13 +1961,21 @@ Nunca permite o uso de name como o algoritmo de chave pública. O nome dado não
 
 
                --no-throw-keyids
-Não coloque os IDs de chave de destinatário em mensagens criptografadas. Isso ajuda a esconder os que receberem as mensagens e é uma medida preventiva contra a limitada análise de tráfego. ([Usando um pouco de engenharia social, qualquer um que está apto a descriptografar mensagens podem chegar se qualquer um dos destinatários é aquele que ele suspeita]) No lado que recebe, isso pode deixar o processo de decriptação mais lento porque todas as chaves secretas disponíveis precisam ser testadas. --no-throw-keyids desabilita essa opção. Essa opção é essencialmente a mesma como é usada --hidden-recipient para todos os destinatários.
+Não coloque os IDs de chave de destinatário em mensagens criptografadas. Isso ajuda a esconder os que receberem as 
+mensagens e é uma medida preventiva contra a limitada análise de tráfego. ([Usando um pouco de engenharia social, 
+qualquer um que está apto a descriptografar mensagens podem chegar se qualquer um dos destinatários é aquele que ele 
+suspeita]) No lado que recebe, isso pode deixar o processo de decriptação mais lento porque todas as chaves secretas 
+disponíveis precisam ser testadas. --no-throw-keyids desabilita essa opção. Essa opção é essencialmente a mesma como é 
+usada --hidden-recipient para todos os destinatários.
 
 
 
 
                --not-dash-escaped
-Essa opção muda o comportamento das assinaturas de texto puro para que elas possam ser usadas para arquivos fragmentados. Você não deveria enviar um arquivo blindado por email, porque todos os espaços e quebras de linha são submetidos ao hash também. Você não pode usar essa opção para dados que tem 5 traços no começo de uma linha, arquivos fragmentados não possuem isso. Uma linha de cabeçalho blindada especial diz ao GnuPG sobre essa opção de assinatura de texto puro.
+Essa opção muda o comportamento das assinaturas de texto puro para que elas possam ser usadas para arquivos fragmentados. 
+Você não deveria enviar um arquivo blindado por email, porque todos os espaços e quebras de linha são submetidos ao hash 
+também. Você não pode usar essa opção para dados que tem 5 traços no começo de uma linha, arquivos fragmentados não 
+possuem isso. Uma linha de cabeçalho blindada especial diz ao GnuPG sobre essa opção de assinatura de texto puro.
 
 
 
@@ -1943,17 +1984,22 @@ Essa opção muda o comportamento das assinaturas de texto puro para que elas po
 
 
                --no-escape-from-lines
-Porque alguns serviços de email mudam linhas que começam com “From “ to “>From “ isso é bom para lidar com tais linhas de uma forma especial quando se cria assinaturas de texto puro para prevenir que o sistema de email quebre a assinatura. Note que todas as outras versões do PGP fazem isso dessa maneira. Habilitado por padrão. --no-escape-from-lines desabilita essa opção.
+Porque alguns serviços de email mudam linhas que começam com “From “ to “>From “ isso é bom para lidar com tais linhas 
+de uma forma especial quando se cria assinaturas de texto puro para prevenir que o sistema de email quebre a assinatura. 
+Note que todas as outras versões do PGP fazem isso dessa maneira. Habilitado por padrão. --no-escape-from-lines 
+desabilita essa opção.
 
 
 
 
                --passphrase-repeat n
-Especifica quantas vezes o gpg irá requisitar que uma nova senha seja repetida. Isso é útil para ajudar a memorizar uma senha. O padrão é uma repetição.
+Especifica quantas vezes o gpg irá requisitar que uma nova senha seja repetida. Isso é útil para ajudar a memorizar uma 
+senha. O padrão é uma repetição.
 
 
                --passphrase-fd n
-Lê a senha da descrição do arquivo n. Apenas a primeira linha será lida da descrição do arquivo n. Se você usar 0 para n, a frase será lida da STDIN. Isso pode ser usado ser apenas uma senha é fornecida.
+Lê a senha da descrição do arquivo n. Apenas a primeira linha será lida da descrição do arquivo n. Se você usar 0 para n, 
+a frase será lida da STDIN. Isso pode ser usado ser apenas uma senha é fornecida.
 
 
 
@@ -1961,19 +2007,24 @@ Lê a senha da descrição do arquivo n. Apenas a primeira linha será lida da d
 
 
                --passphrase-file file
-Lê a senha do arquivo file. Apenas a primeira linha será lida do arquivo file. Isso pode ser usado apenas se uma senha é fornecida. Obviamente, a senha armazenada em um arquivo é de segurança questionada se outros usuários podem ser esse arquivo. Não use essa opção se você puder evitar.
+Lê a senha do arquivo file. Apenas a primeira linha será lida do arquivo file. Isso pode ser usado apenas se uma senha é 
+fornecida. Obviamente, a senha armazenada em um arquivo é de segurança questionada se outros usuários podem ser esse 
+arquivo. Não use essa opção se você puder evitar.
 
 
 
 
                --passphrase string
-Use string como a senha. Isso pode ser usado se apenas uma senha é fornecida. Obviamente isso é de segurança questionável em um sistema multi-usuário. Não use essa opção se você puder evitar.
+Use string como a senha. Isso pode ser usado se apenas uma senha é fornecida. Obviamente isso é de segurança questionável 
+em um sistema multi-usuário. Não use essa opção se você puder evitar.
 
 
 
 
                --command-fd n
-Isso é uma substituição para o obsoleto sistema de memória compartilhada do modo IPC. Se essa opção está habilitada, entrada de usuário em questões não é esperada pelo TTy, mas sim da descrição de arquivo dada. Isso pode ser usado com --status-fd. Veja o arquivo doc/DETAILS na distribuição de código para detalhes de como usá-lo.
+Isso é uma substituição para o obsoleto sistema de memória compartilhada do modo IPC. Se essa opção está habilitada, 
+entrada de usuário em questões não é esperada pelo TTy, mas sim da descrição de arquivo dada. Isso pode ser usado com 
+--status-fd. Veja o arquivo doc/DETAILS na distribuição de código para detalhes de como usá-lo.
 
 
 
@@ -1986,43 +2037,57 @@ Isso é uma substituição para o obsoleto sistema de memória compartilhada do 
 
 
                --no-allow-non-selfsigned-uid
-Permite a importação e o uso de chaves com IDs de usuário que não são auto-assinadas. Isso não é recomendado, uma ID de usuário não assinada pode ser forjada trivialmente. --no-allow-non=selfsigned-uid desabilita.
+Permite a importação e o uso de chaves com IDs de usuário que não são auto-assinadas. Isso não é recomendado, uma ID de 
+usuário não assinada pode ser forjada trivialmente. --no-allow-non=selfsigned-uid desabilita.
 
 
                --allow-freeform-uid
-Desabilita todas as checagens na forma de IDs de usuário enquanto um novo está sendo gerado. Essa opção deveria ser usada apenas em ambientes muito especiais, já que ela não assegura o formato padrão de-facto dos IDs de usuário.
+Desabilita todas as checagens na forma de IDs de usuário enquanto um novo está sendo gerado. Essa opção deveria ser 
+usada apenas em ambientes muito especiais, já que ela não assegura o formato padrão de-facto dos IDs de usuário.
 
 
                --ignore-time-conflict
-Normalmente o GnuPG checa se os timestamps associados com as chaves e assinaturas são valores plausíveis. No entanto, algumas assinaturas parecer ser mais velhas que a chave devido a problemas com o relógio. Essa opção faz essas checagens serem apenas alertas. Veja também --ignore-valid-from para assuntos de timestamp em sub-chaves.
+Normalmente o GnuPG checa se os timestamps associados com as chaves e assinaturas são valores plausíveis. No entanto, 
+algumas assinaturas parecer ser mais velhas que a chave devido a problemas com o relógio. Essa opção faz essas checagens 
+serem apenas alertas. Veja também --ignore-valid-from para assuntos de timestamp em sub-chaves.
 
 
 
 
                --ignore-valid-from
-O GnuPG normalmente não seleciona e usa chaves criadas no futuro. Essa opção permite o uso de tais chaves e aquelas exibindo o comportamento pre-1.0.7. Você não deve usar essa opção a não ser que você tenha algum problema com o relógio. Veja também --ignore-time-conflict para assuntos de timestamp em assinaturas.
+O GnuPG normalmente não seleciona e usa chaves criadas no futuro. Essa opção permite o uso de tais chaves e aquelas 
+exibindo o comportamento pre-1.0.7. Você não deve usar essa opção a não ser que você tenha algum problema com o relógio. 
+Veja também --ignore-time-conflict para assuntos de timestamp em assinaturas.
 
 
 
 
                --ignore-crc-error
-A blindagem ASCII usada pelo OpenPGP é protegida por uma coma de erros CRC contra erros de transmissão. Ocasionalmente o CRC fica deformado em algum lugar no canal de transmissão, mas o conteúdo (que é protegido pelo protocolo OpenPGP de qualquer jeito) continua intacto. Essa opção permite o GnuPG ignorar erros CRC
+A blindagem ASCII usada pelo OpenPGP é protegida por uma coma de erros CRC contra erros de transmissão. Ocasionalmente o 
+CRC fica deformado em algum lugar no canal de transmissão, mas o conteúdo (que é protegido pelo protocolo OpenPGP de 
+qualquer jeito) continua intacto. Essa opção permite o GnuPG ignorar erros CRC
 
 
                --ignore-mdc-error
-Essa opção muda a falha de proteção de integridade MDC em um alerta. Isso pode ser útil se a mensagem está parcialmente corrompida, mas é necessária para receber a maior quantidade de dados possível da mensagem corrompida. No entanto, esteja atento que a falha de proteção MDC pode também significar que a mensagem foi adulterada intencionalmente por um atacante.
+Essa opção muda a falha de proteção de integridade MDC em um alerta. Isso pode ser útil se a mensagem está parcialmente 
+corrompida, mas é necessária para receber a maior quantidade de dados possível da mensagem corrompida. No entanto, 
+esteja atento que a falha de proteção MDC pode também significar que a mensagem foi adulterada intencionalmente por um 
+atacante.
 
 
 
 
               --no-default-keyring
-Não adiciona os chaveiros padrão à lista de chaveiros. Note que o GnuPG não irá operar sem chaveiros, então se você usar essa opção e não prover nenhum chaveiro alternativo via --keyring ou --secret-keyring, então o GnuPG ainda usará os chaveiros padrão público e secretos.
+Não adiciona os chaveiros padrão à lista de chaveiros. Note que o GnuPG não irá operar sem chaveiros, então se você usar 
+essa opção e não prover nenhum chaveiro alternativo via --keyring ou --secret-keyring, então o GnuPG ainda usará os 
+chaveiros padrão público e secretos.
 
 
 
 
                --skip-verify
-Ignora o passo de verificação de assinatura. Isso pode ser usado para fazer a decriptação ficar mais rápida se a verificação de assinatura não é necessária.
+Ignora o passo de verificação de assinatura. Isso pode ser usado para fazer a decriptação ficar mais rápida se a 
+verificação de assinatura não é necessária.
 
 
 
@@ -2034,7 +2099,10 @@ Imprime a listagem de chaves delimitadas por dois pontos (como em --with-colons)
 
 
                --fast-list-mode
-Muda a saída da saída de comandos para funcionar mais rápido; isso é conseguido deixando algumas partes vazias. Algumas aplicações não precisam do ID de usuário e da confiança das informações dadas nas listagens. Usando essa opção eles podem fornecer uma listagem mais rápida. O comportamento exato dessa opção pode mudar em versões futuras. Se você está perdendo informação, não use essa opção.
+Muda a saída da saída de comandos para funcionar mais rápido; isso é conseguido deixando algumas partes vazias. Algumas 
+aplicações não precisam do ID de usuário e da confiança das informações dadas nas listagens. Usando essa opção eles 
+podem fornecer uma listagem mais rápida. O comportamento exato dessa opção pode mudar em versões futuras. Se você está 
+perdendo informação, não use essa opção.
 
 
                --no-literal
@@ -2055,7 +2123,9 @@ Muda a saída da saída de comandos para funcionar mais rápido; isso é consegu
 
                --show-session-key
 Mostra a chave de sessão usada em uma mensagem. Veja --override-session-key em contra-partida a essa opção.
-Nós pensamos que a custódia de chaves é uma coisa ruim; no entanto o usuário deve ter a liberdade de decidir ir à prisão ou revelar o conteúdo de uma mensagem específica sem comprometer todas as mensagens já criptografadas por uma chave secreta. NÃO USE ISSO EXCETO SE VOCÊ É REALMENTE FORÇADO A FAZER.
+Nós pensamos que a custódia de chaves é uma coisa ruim; no entanto o usuário deve ter a liberdade de decidir ir à prisão 
+ou revelar o conteúdo de uma mensagem específica sem comprometer todas as mensagens já criptografadas por uma chave 
+secreta. NÃO USE ISSO EXCETO SE VOCÊ É REALMENTE FORÇADO A FAZER.
 
 
 
@@ -2063,7 +2133,9 @@ Nós pensamos que a custódia de chaves é uma coisa ruim; no entanto o usuário
 
 
                --override-session-key string
-Não usa a chave pública, mas sim a string de chave de sessão. O formato dessa string é o mesmo que a impressa por --show-session-key. Essa opção não é usada normalmente, mas vem a tona caso alguém te force a revelar o conteúdo de uma mensagem criptografada; usando essa opção você pode fazer isso sem revelar a chave secreta.
+Não usa a chave pública, mas sim a string de chave de sessão. O formato dessa string é o mesmo que a impressa por 
+--show-session-key. Essa opção não é usada normalmente, mas vem a tona caso alguém te force a revelar o conteúdo de uma 
+mensagem criptografada; usando essa opção você pode fazer isso sem revelar a chave secreta.
 
 
 
@@ -2072,13 +2144,18 @@ Não usa a chave pública, mas sim a string de chave de sessão. O formato dessa
 
 
                --no-ask-sig-expire
-Quando se está fazendo uma assinatura de dados, pergunta por um tempo de expiração. Se essa opção não é especificada, o tempo de expriração definido via --default-sig-expire é usado. --no-ask-sig-expire desabilita essa opção. Note que por padrão --force-v3-sigs também desabilita essa opção. Se você quer expiração de assinatura, você precisa definir --no-force-v3-sigs, assim como habilitar --ask-sig-expire.
+Quando se está fazendo uma assinatura de dados, pergunta por um tempo de expiração. Se essa opção não é especificada, o 
+tempo de expriração definido via --default-sig-expire é usado. --no-ask-sig-expire desabilita essa opção. Note que por 
+padrão --force-v3-sigs também desabilita essa opção. Se você quer expiração de assinatura, você precisa definir 
+--no-force-v3-sigs, assim como habilitar --ask-sig-expire.
 
 
 
 
                --default-sig-expire
-O tempo de expiração padrão para usar na expiração de assinatura. Valores válidos são “0” para não haver expiração, um número seguido de uma letra d (para dias), w (para semanas), m (para meses) ou y (para anos) (por exemplo “2m” para dois meses ou “5y” para cinco anos), ou uma data absoluta na forma AAAA-MM-DD. O padrão é “0”.
+O tempo de expiração padrão para usar na expiração de assinatura. Valores válidos são “0” para não haver expiração, um 
+número seguido de uma letra d (para dias), w (para semanas), m (para meses) ou y (para anos) (por exemplo “2m” para dois 
+meses ou “5y” para cinco anos), ou uma data absoluta na forma AAAA-MM-DD. O padrão é “0”.
 
 
 
@@ -2087,11 +2164,14 @@ O tempo de expiração padrão para usar na expiração de assinatura. Valores v
 
 
                --no-ask-cert-expire
-Quando uma assinatura está sendo feita, pergunta por um tempo de expiração. Se essa opção não é especificada, o tempo de expiração definido via --default-cert-expire é usado. --no-ask-cert-expire desabilita essa opção.
+Quando uma assinatura está sendo feita, pergunta por um tempo de expiração. Se essa opção não é especificada, o tempo 
+de expiração definido via --default-cert-expire é usado. --no-ask-cert-expire desabilita essa opção.
 
 
                --default-cert-expire
-O tempo de expiração padrão é usado pela expiração de assinatura de chave. Valores válidos são “0” para não haver expiração, um número seguido de uma letra d (para dias), w (para semanas), m (para meses) ou y (para anos) (por exemplo “2m” para dois meses ou “5y” para cinco anos), ou uma data absoluta na forma AAAA-MM-DD. O padrão é “0”.
+O tempo de expiração padrão é usado pela expiração de assinatura de chave. Valores válidos são “0” para não haver 
+expiração, um número seguido de uma letra d (para dias), w (para semanas), m (para meses) ou y (para anos) 
+(por exemplo “2m” para dois meses ou “5y” para cinco anos), ou uma data absoluta na forma AAAA-MM-DD. O padrão é “0”.
 
 
 
@@ -2104,7 +2184,9 @@ O tempo de expiração padrão é usado pela expiração de assinatura de chave.
 
 
                --no-allow-multiple-messages
-Permite o processamento de várias mensagens OpenPGP contidas em um único arquivo ou fluxo. Alguns programas que chamam o GPG não estão preparados para o processamento de várias mensagens ao mesmo tempo, então o padrão dessa opção é não. Note que versões do GPG anteriores à 1.4.7 sempre permitem múltiplas mensagens.
+Permite o processamento de várias mensagens OpenPGP contidas em um único arquivo ou fluxo. Alguns programas que chamam o 
+GPG não estão preparados para o processamento de várias mensagens ao mesmo tempo, então o padrão dessa opção é não. Note 
+que versões do GPG anteriores à 1.4.7 sempre permitem múltiplas mensagens.
         
 Aviso: não use essa opção a não ser que você precise de uma solução alternativa temporária.
 
@@ -2114,7 +2196,8 @@ Aviso: não use essa opção a não ser que você precise de uma solução alter
 
 
                --enable-special-filenames
-Essa opção habilita um modo em que nomes de arquivo na forma ‘-&n’, onde n é um número decimal não negativo, referem-se ao descritor de arquivo n e não para um arquivo com aquele nome.
+Essa opção habilita um modo em que nomes de arquivo na forma ‘-&n’, onde n é um número decimal não negativo, referem-se 
+ao descritor de arquivo n e não para um arquivo com aquele nome.
 
 
 
@@ -2128,7 +2211,8 @@ Essa opção habilita um modo em que nomes de arquivo na forma ‘-&n’, onde n
 
 
                --preserve-permissions
-Não muda as permissões de um chaveiro secreto para usá-lo no modo leitura/escrita apenas. Use essa opção apenas se você sabe exatamente o que está fazendo.
+Não muda as permissões de um chaveiro secreto para usá-lo no modo leitura/escrita apenas. Use essa opção apenas se você 
+sabe exatamente o que está fazendo.
 
 
 
@@ -2136,13 +2220,15 @@ Não muda as permissões de um chaveiro secreto para usá-lo no modo leitura/esc
 
 
                --default-preference-list string
-Define a lista de preferências padrão para string. Essa lista de preferências é usada para novas chaves e se torna o padrão para “setpref” no menu de edição.
+Define a lista de preferências padrão para string. Essa lista de preferências é usada para novas chaves e se torna o 
+padrão para “setpref” no menu de edição.
 
 
 
 
                --default-keyserver-url name
-Define a URL de keyserver padrão para name. Esse keyserver será usado como a URL de keyserver quando se está escrevendo uma nova auto-assinatura em uma chave, o que inclui uma geração de chave e a mudança de preferências.
+Define a URL de keyserver padrão para name. Esse keyserver será usado como a URL de keyserver quando se está escrevendo 
+uma nova auto-assinatura em uma chave, o que inclui uma geração de chave e a mudança de preferências.
 
 
 
@@ -2150,7 +2236,9 @@ Define a URL de keyserver padrão para name. Esse keyserver será usado como a U
 
 
                --list-config
-Mostra várias parâmetros de configuração interna do GnuPG. Essa opção é destinada a programas externo que chamam o GnuPG para executar tarefas, e não são geralmente úteis. Veja o arquivo ‘doc/DETAILS’ na distribuição de código para detalhes de quais itens de configuração podem ser listados. --list-config é usável apenas com --with-colons ativado.
+Mostra várias parâmetros de configuração interna do GnuPG. Essa opção é destinada a programas externo que chamam o GnuPG 
+para executar tarefas, e não são geralmente úteis. Veja o arquivo ‘doc/DETAILS’ na distribuição de código para detalhes 
+de quais itens de configuração podem ser listados. --list-config é usável apenas com --with-colons ativado.
 
 
 
@@ -2164,7 +2252,9 @@ Esse comando é similar ao --list-config, mas geralmente é usado apenas interna
 
 
                --gpgconf-test
-Essa é mais ou menos uma ação idiota. No entanto analisa o arquivo de configuração e retorna com falhas se o arquivo de configuração fosse impedir o gpg de iniciar. Isso pode ser útil para executar uma checagem de sintaxe no arquivo de configuração.
+Essa é mais ou menos uma ação idiota. No entanto analisa o arquivo de configuração e retorna com falhas se o arquivo de 
+configuração fosse impedir o gpg de iniciar. Isso pode ser útil para executar uma checagem de sintaxe no arquivo de 
+configuração.
 
 
 
@@ -2183,7 +2273,8 @@ Essa é mais ou menos uma ação idiota. No entanto analisa o arquivo de configu
 
 
                --load-extension name
-Carrega um modulo de extensão. Se nome não contem uma barra ele procura no diretório configurado quando o GnuPG foi construído (geralmente “/usr/local/lib/gnupg”) Exensões geralmente não são mais úteis e o uso dessa opção é obsoleto.
+Carrega um modulo de extensão. Se nome não contem uma barra ele procura no diretório configurado quando o GnuPG foi 
+construído (geralmente “/usr/local/lib/gnupg”) Exensões geralmente não são mais úteis e o uso dessa opção é obsoleto.
 
 
 
@@ -2192,19 +2283,23 @@ Carrega um modulo de extensão. Se nome não contem uma barra ele procura no dir
         
                --no-show-photos
         
-Causa --list-keys, --list-sigs, --list-public-keys, --list-secret-keys, e a verificação de uma assinatura também pode exibir a ID de photo anexadas à chave, se existir alguma. Veja também --photo-viewer. Essa opção é obsoleta. Use --list-option [no-]show-photos e/ou --verify-options [no-]show-photos ao invés.
+Causa --list-keys, --list-sigs, --list-public-keys, --list-secret-keys, e a verificação de uma assinatura também pode 
+exibir a ID de photo anexadas à chave, se existir alguma. Veja também --photo-viewer. Essa opção é obsoleta. Use 
+--list-option [no-]show-photos e/ou --verify-options [no-]show-photos ao invés.
 
 
 
 
                --show-keyring
-Mostra o nome do chaveiro que está no topo da listagem de chaves para mostrar em qual chaveiro uma dada chave reside. Essa opção é obsoleta: use  --list-options [no-]show-keyring em vez disso..
+Mostra o nome do chaveiro que está no topo da listagem de chaves para mostrar em qual chaveiro uma dada chave reside. 
+Essa opção é obsoleta: use  --list-options [no-]show-keyring em vez disso..
 
 
 
 
                --ctapi-driver file
-Use arquivo para acessar o leitor de smartcard. O padrão corrente é ‘libtowitoko.so’. Note que o uso essa interface é obsoleto; e pode ser removida de versões futuras.
+Use arquivo para acessar o leitor de smartcard. O padrão corrente é ‘libtowitoko.so’. Note que o uso essa interface é 
+obsoleto; e pode ser removida de versões futuras.
 
 
 
@@ -2219,7 +2314,9 @@ Use arquivo para acessar o leitor de smartcard. O padrão corrente é ‘libtowi
 
 
                --no-show-notation
-Mostra notações de assinaturas nas listagens --list-sigs ou --ckeck-sigs assim como quando se está realizando uma assinatura com uma notação nela. Essas opções são obsoletas. Use --list-options [no-]show-notation e/ou --verify-options [no-]show-notation em vez disso.
+Mostra notações de assinaturas nas listagens --list-sigs ou --ckeck-sigs assim como quando se está realizando uma 
+assinatura com uma notação nela. Essas opções são obsoletas. Use --list-options [no-]show-notation e/ou --verify-options 
+[no-]show-notation em vez disso.
 
 
 
@@ -2228,7 +2325,9 @@ Mostra notações de assinaturas nas listagens --list-sigs ou --ckeck-sigs assim
 
 
                --no-show-policy-url
-Mostra a política de URLs nas listagens em --list-sigs ou --check-sigs assim como quando se está verificando um assinatura com uma política de URL nela. Essas opções são obsoletas. Use --list-options [no-]show-notation e/ou --verify-options [no-]show-notation em vez disso.
+Mostra a política de URLs nas listagens em --list-sigs ou --check-sigs assim como quando se está verificando um 
+assinatura com uma política de URL nela. Essas opções são obsoletas. Use --list-options [no-]show-notation e/ou 
+--verify-options [no-]show-notation em vez disso.
 
 
 EXEMPLOS
@@ -2274,7 +2373,10 @@ mostra a impressão digital
 
 
                gpg --verify sigfile
-Verifica a assinatura do arquivo, mas não retorna os dados. A segunda forma é usar assinaturas avulsas, onde sigfile é a assinatura avulsa (ASCII blindado ou binário) e são os dados assinados; se isso não é fornecido nome do arquivo que contém os dados de assinatura é construído cortando a extensão (“.asc” ou “.sig”) de sigfile ou perguntando ao usuário por um nome de arquivo.
+Verifica a assinatura do arquivo, mas não retorna os dados. A segunda forma é usar assinaturas avulsas, onde sigfile é a 
+assinatura avulsa (ASCII blindado ou binário) e são os dados assinados; se isso não é fornecido nome do arquivo que 
+contém os dados de assinatura é construído cortando a extensão (“.asc” ou “.sig”) de sigfile ou perguntando ao usuário 
+por um nome de arquivo.
 
 
 
@@ -2284,7 +2386,8 @@ Verifica a assinatura do arquivo, mas não retorna os dados. A segunda forma é 
 
 
 COMO ESPECIFICAR UMA ID DE USUÁRIO
-Existem diferentes maneiras de especificar uma ID de usuário para o GnuPG. Algumas delas são validas apenas para gpg, outras somente são boas para o gpgsm. Aqui está a lista completa de maneiras de especificar uma chave:
+Existem diferentes maneiras de especificar uma ID de usuário para o GnuPG. Algumas delas são validas apenas para gpg, 
+outras somente são boas para o gpgsm. Aqui está a lista completa de maneiras de especificar uma chave:
 
 
 
@@ -2293,9 +2396,13 @@ Existem diferentes maneiras de especificar uma ID de usuário para o GnuPG. Algu
 
        Pelo Id da chave.
         
-Esse formato é deduzido do tamanho da string e seu conteúdo ou o prefixo 0x. Uma Id de chave de um certificado X.509 são os 64 bits menos significativos da sua impressão digital SHA-1. O uso de Ids de chave é apenas um atalho, para todo o processo automático a impressão digital deveria ser usada.
-Quando o gpg for usado um ponto de exclamação (!) pode ser adicionado ao final para forçar o uso da chave primária ou secundária especificada e não experimentar e calcular qual chave primária ou secundária a ser usada.
-As quatro últimas linhas do exemplo dão a ID de chave em sua forma longa como é usada internamente pelo protocolo OpenPGP. Você pode ver o ID de chave longo usando a opção --with-colons.
+Esse formato é deduzido do tamanho da string e seu conteúdo ou o prefixo 0x. Uma Id de chave de um certificado X.509 são 
+os 64 bits menos significativos da sua impressão digital SHA-1. O uso de Ids de chave é apenas um atalho, para todo o 
+processo automático a impressão digital deveria ser usada.
+Quando o gpg for usado um ponto de exclamação (!) pode ser adicionado ao final para forçar o uso da chave primária ou 
+secundária especificada e não experimentar e calcular qual chave primária ou secundária a ser usada.
+As quatro últimas linhas do exemplo dão a ID de chave em sua forma longa como é usada internamente pelo protocolo 
+OpenPGP. Você pode ver o ID de chave longo usando a opção --with-colons.
 
 
                  234567C4
@@ -2317,9 +2424,12 @@ As quatro últimas linhas do exemplo dão a ID de chave em sua forma longa como 
 Por impressão digital.
 
 
-Esse formato é deduzido do tamanho da string e seu conteúdo ou o prefixo 0x. Note que apenas os a versão de 20 bytes da impressão digital está disponível com gpgsm (i.e. o hash SHA-1  do certificado).
-Quando o gpg for usado um ponto de exclamação (!) pode ser adicionado ao final para forçar o uso da chave primária ou secundária especificada e não experimentar e calcular qual chave primária ou secundária a ser usada.
-A melhor forma de especificar uma Id de chave é usando a impressão digital. Isso evita qualquer ambiguidade nos casos em que houver Ids de chave duplicados.
+Esse formato é deduzido do tamanho da string e seu conteúdo ou o prefixo 0x. Note que apenas os a versão de 20 bytes da 
+impressão digital está disponível com gpgsm (i.e. o hash SHA-1  do certificado).
+Quando o gpg for usado um ponto de exclamação (!) pode ser adicionado ao final para forçar o uso da chave primária ou 
+secundária especificada e não experimentar e calcular qual chave primária ou secundária a ser usada.
+A melhor forma de especificar uma Id de chave é usando a impressão digital. Isso evita qualquer ambiguidade nos casos em 
+que houver Ids de chave duplicados.
 
 
                  1234343434343434C434343434343434
@@ -2328,7 +2438,8 @@ A melhor forma de especificar uma Id de chave é usando a impressão digital. Is
                  0xE12343434343434343434EAB3484343434343434
 
 
-(gpgsm também aceita dois pontos entre cada par de digitos hexadecimais porque esse é o padrão de-facto em como apresentar impressões digitais X.509.)
+(gpgsm também aceita dois pontos entre cada par de digitos hexadecimais porque esse é o padrão de-facto em como 
+apresentar impressões digitais X.509.)
 
 
 
@@ -2356,7 +2467,9 @@ Isso é indicado colocando o endereço de email da forma habitual entre um sinal
 
 
 Pela correspondência de palavras.
-Todas as palavras precisam corresponder exatamente (sem ser caso sensitivo) mas podem aparecer em qualquer ordem no ID de usuário ou um nome de assunto. Palavras são qualquer sequência de letras, dígitos, underlines e todo caracter com 7 bits definidos.
+Todas as palavras precisam corresponder exatamente (sem ser caso sensitivo) mas podem aparecer em qualquer ordem no ID 
+de usuário ou um nome de assunto. Palavras são qualquer sequência de letras, dígitos, underlines e todo caracter com 7 
+bits definidos.
 
 
                  +Heinrich Heine duesseldorf
@@ -2367,7 +2480,9 @@ Todas as palavras precisam corresponder exatamente (sem ser caso sensitivo) mas 
 Pela correspondência exata do DN de assunto.
 
 
-Isso é indicado por uma barra no início, diretamente seguida pelo DN de assunto encodado em RFC-2253. Note que você não pode usar a string impressa por “gpgsm --list-keys” porque ela tem sido reordenada e modificada por uma melhor legibilidade; use --with-colons para imprimir a string RFC-2253 bruta (mas fora do padrão).
+Isso é indicado por uma barra no início, diretamente seguida pelo DN de assunto encodado em RFC-2253. Note que você não 
+pode usar a string impressa por “gpgsm --list-keys” porque ela tem sido reordenada e modificada por uma melhor 
+legibilidade; use --with-colons para imprimir a string RFC-2253 bruta (mas fora do padrão).
 
 
 
@@ -2379,7 +2494,8 @@ Isso é indicado por uma barra no início, diretamente seguida pelo DN de assunt
 
 Pela correspondência exta do DN do emissor.
         
-Isso é indicado por uma marca de hash inicial, diretamente seguida por uma barra e então diretamente seguida pelo DN encodado em rfc2253 do emissor. Isso deve retornar o certificado raiz do emissor. Veja as notas abaixo.
+Isso é indicado por uma marca de hash inicial, diretamente seguida por uma barra e então diretamente seguida pelo DN 
+encodado em rfc2253 do emissor. Isso deve retornar o certificado raiz do emissor. Veja as notas abaixo.
 
 
                  #/CN=Root Cert,O=Poets,L=Paris,C=FR
@@ -2389,7 +2505,8 @@ Isso é indicado por uma marca de hash inicial, diretamente seguida por uma barr
 
 Pela correspondência exata do número serial e DN do emissor.
         
-Isso é indicado por uma marca de hash, seguida por uma representação hexadecimal de um número serial, então seguido por uma barra e pelo DN do emissor encodado em RFC-2253. Veja as notas abaixo.
+Isso é indicado por uma marca de hash, seguida por uma representação hexadecimal de um número serial, então seguido por 
+uma barra e pelo DN do emissor encodado em RFC-2253. Veja as notas abaixo.
 
 
                  #4F03/CN=Root Cert,O=Poets,L=Paris,C=FR
@@ -2400,7 +2517,8 @@ Isso é indicado por uma marca de hash, seguida por uma representação hexadeci
 Pela compressão de chaves.
 
 
-Isso é indicado por um ‘e’ comercial seguido de 40 dígitos hexadecimais de de uma chave comprimida. gpgsm imprime a chave comprimida quando é usado o comando --dump-cert. Não funciona ainda para chaves OpenPGP.
+Isso é indicado por um ‘e’ comercial seguido de 40 dígitos hexadecimais de de uma chave comprimida. gpgsm imprime a 
+chave comprimida quando é usado o comando --dump-cert. Não funciona ainda para chaves OpenPGP.
 
 
          &D75F22C3F86E355877348498CDC92BD21010A480
@@ -2409,7 +2527,8 @@ Isso é indicado por um ‘e’ comercial seguido de 40 dígitos hexadecimais de
 
 
 Pela correspondência de substrings.
-Esse é o modo padrão, mas aplicações podem querer indicá-lo explicitamente ao colocar um asterisco na frente. A correspondência não é sensível a maiúsculas e minúsculas.
+Esse é o modo padrão, mas aplicações podem querer indicá-lo explicitamente ao colocar um asterisco na frente. A 
+correspondência não é sensível a maiúsculas e minúsculas.
 
 
                  Heine
@@ -2418,8 +2537,10 @@ Esse é o modo padrão, mas aplicações podem querer indicá-lo explicitamente 
 
 
 
-Por favor note que nós reusamos a marque que identifica o hash que foi usada em versões GnuPG antigas para indicar o id local chamado. Não é mais utilizado atualmente e não deve ocorrer conflito quando for usado com coisas X.509.
-Usar o formato RFC-2253 de DNs tem a desvantagem de que não é possível mapeá-los de volta para a codificação original, no entanto nós não temos que fazer isso pois nosso banco de dados de chaves armazena essa codificação como metadado.
+Por favor note que nós reusamos a marque que identifica o hash que foi usada em versões GnuPG antigas para indicar o id 
+local chamado. Não é mais utilizado atualmente e não deve ocorrer conflito quando for usado com coisas X.509.
+Usar o formato RFC-2253 de DNs tem a desvantagem de que não é possível mapeá-los de volta para a codificação original, 
+no entanto nós não temos que fazer isso pois nosso banco de dados de chaves armazena essa codificação como metadado.
 
 
 
@@ -2433,7 +2554,8 @@ Usar o formato RFC-2253 de DNs tem a desvantagem de que não é possível mapeá
 ARQUIVOS
 
 
-Há alguns arquivos de configuração para controlar certos aspectos das operações do gpg. A menos que seja indicado, espera-se que eles estejam no diretório home corrente.
+Há alguns arquivos de configuração para controlar certos aspectos das operações do gpg. A menos que seja indicado, 
+espera-se que eles estejam no diretório home corrente.
 (veja: [option --homedir]).
 
 
@@ -2442,9 +2564,13 @@ Há alguns arquivos de configuração para controlar certos aspectos das operaç
 
 
 gpg.conf
-Esse é o arquivo de configuração padrão lido pelo gpg na inicialização. Nele contém toda opção longa válida; os dois traços iniciais podem não ser digitados e a opção pode não ser abreviada. Esse nome padrão pode ser mudado pela linha de comando (veja: [option --options]). Você deve fazer um backup desse arquivo.
-Note que em instalações maiores, isso pode ser útil para colocar arquivos predefinidos no diretório ‘/etc/skel/.gnupg/’ para que usuário criados recentemente possam começar com uma configuração funcional.
-Para propósitos internos o pgp cria e manté alguns outros arquivos; eles todos se encontram no diretório home corrente (veja: [option --homedir]). Apenas o gpg pode modificar esses arquivos.
+Esse é o arquivo de configuração padrão lido pelo gpg na inicialização. Nele contém toda opção longa válida; os dois 
+traços iniciais podem não ser digitados e a opção pode não ser abreviada. Esse nome padrão pode ser mudado pela linha de 
+comando (veja: [option --options]). Você deve fazer um backup desse arquivo.
+Note que em instalações maiores, isso pode ser útil para colocar arquivos predefinidos no diretório ‘/etc/skel/.gnupg/’ 
+para que usuário criados recentemente possam começar com uma configuração funcional.
+Para propósitos internos o pgp cria e manté alguns outros arquivos; eles todos se encontram no diretório home corrente 
+(veja: [option --homedir]). Apenas o gpg pode modificar esses arquivos.
 
 
 
@@ -2476,7 +2602,8 @@ Para propósitos internos o pgp cria e manté alguns outros arquivos; eles todos
 
 
                ~/.gnupg/trustdb.gpg
-O banco de dados de confiança. Não há a necessidade de se fazer um backup desse arquivo; é melhor fazer um backup dos valores de confiança do proprietário (veja: [option --export-own-ertrust]).
+O banco de dados de confiança. Não há a necessidade de se fazer um backup desse arquivo; é melhor fazer um backup dos 
+valores de confiança do proprietário (veja: [option --export-own-ertrust]).
 
 
 
@@ -2525,13 +2652,18 @@ Usado para localizar o diretório home padrão.
 
 
                GPG_AGENT_INFO
-Usado para localizar o gpg-agent. É usado honradamente apenas quando --use-agent está definido. O valor consiste de 3 sinais de dois pontos delimitados por campos: O primeiro é o caminho para o Unix Domain Socket, o segundo é o PID do pgp-agent e o protocolo de versão que deveria ser definido como 1. Na inicialização do gpg-agent como descrito em sua documentação, essas variáveis são definidas para o valor correto. A opção --gpg-agent-info pode ser usada para sobrescrever isso.
+Usado para localizar o gpg-agent. É usado honradamente apenas quando --use-agent está definido. O valor consiste de 3 
+sinais de dois pontos delimitados por campos: O primeiro é o caminho para o Unix Domain Socket, o segundo é o PID do 
+pgp-agent e o protocolo de versão que deveria ser definido como 1. Na inicialização do gpg-agent como descrito em sua 
+documentação, essas variáveis são definidas para o valor correto. A opção --gpg-agent-info pode ser usada para 
+sobrescrever isso.
 
 
 
 
                PINENTRY_USER_DATA
-Esse valor é passado via gpg-agent par o pinentry. Isso é útil para transmitir informação extra para um pinentry customizado.
+Esse valor é passado via gpg-agent par o pinentry. Isso é útil para transmitir informação extra para um pinentry 
+customizado.
 
 
 
@@ -2547,17 +2679,27 @@ Esse valor é passado via gpg-agent par o pinentry. Isso é útil para transmiti
 
 
                LANGUAGE
-Independentemente do seu uso pelo GNU, é usado na versão W32 para sobrescrever a linguagem selecionada feita através do Registro. Se usado e definido para um nome de linguagem (langid) válido e disponível, o arquivo com a tradução é carregado de gpgdir/gnupg.nls/langid.mo. Aqui gpgdir é o diretório em que o binário do gpg foi carregado. Se ele não puder ser carregado, o Registro é experimentado e como último recurso o sistema local nativo do Windows é usado.
+Independentemente do seu uso pelo GNU, é usado na versão W32 para sobrescrever a linguagem selecionada feita através do 
+Registro. Se usado e definido para um nome de linguagem (langid) válido e disponível, o arquivo com a tradução é 
+carregado de gpgdir/gnupg.nls/langid.mo. Aqui gpgdir é o diretório em que o binário do gpg foi carregado. Se ele não 
+puder ser carregado, o Registro é experimentado e como último recurso o sistema local nativo do Windows é usado.
 
 
 
 
 BUGS
         
-Em muitos sistemas esse programa deveria ser instalado como super usuário (root). Isso é necessário para bloquear páginas de memória. O bloqueio de páginas de memória previne que o sistema operacional escreva páginas de memória (que podem conter frases ou outros materiais sensitivos) no disco. Se você não receber mensagens de alerta sobre memória insegura, o seu sistema operacional suporta o bloqueio sem ser super usuário. O programa perde os privilégios de super usuário assim que a memória bloqueada é alocada.
+Em muitos sistemas esse programa deveria ser instalado como super usuário (root). Isso é necessário para bloquear 
+páginas de memória. O bloqueio de páginas de memória previne que o sistema operacional escreva páginas de memória (que 
+podem conter frases ou outros materiais sensitivos) no disco. Se você não receber mensagens de alerta sobre memória 
+insegura, o seu sistema operacional suporta o bloqueio sem ser super usuário. O programa perde os privilégios de super 
+usuário assim que a memória bloqueada é alocada.
 
 
-Note também que alguns sistemas (especialmente laptops) tem a habilidade de "suspender para o disco" (também conhecido como "hibernar"). Isso copia toda a memória para o disco antes de entrar em um modo de baixo consumo de energia ou até mesmo no modo desligado. A não ser que medidas sejam tomadas no sistema operacional para proteger a memória salva, senhas e outros materiais sensíveis podem ser recuperados mais tarde do disco.
+Note também que alguns sistemas (especialmente laptops) tem a habilidade de "suspender para o disco" (também conhecido 
+como "hibernar"). Isso copia toda a memória para o disco antes de entrar em um modo de baixo consumo de energia ou até 
+mesmo no modo desligado. A não ser que medidas sejam tomadas no sistema operacional para proteger a memória salva, 
+senhas e outros materiais sensíveis podem ser recuperados mais tarde do disco.
 
 
 
@@ -2566,10 +2708,13 @@ VEJA TAMBÉM
        gpgv(1),
 
 
-A documentação completa para essa ferramenta é mantida como um manual Texinfo. Se os programas GnuPG e info estão instalados corretamente em seu lugar, o comando info gnupg deve lhe conceder acesso ao manual completo, incluindo uma estrutura de menu e um índice.
+A documentação completa para essa ferramenta é mantida como um manual Texinfo. Se os programas GnuPG e info estão 
+instalados corretamente em seu lugar, o comando info gnupg deve lhe conceder acesso ao manual completo, incluindo uma 
+estrutura de menu e um índice.
 
 
-Este manual foi traduzido e revisado por Juliane Barcelos, Richiely Batista e Sidney Ribeiro Júnior durante o mês de fevereiro, 2013.
+Este manual foi traduzido e revisado por Juliane Barcelos, Richiely Batista e Sidney Ribeiro Júnior durante o mês de 
+fevereiro, 2013.
 
 
   
